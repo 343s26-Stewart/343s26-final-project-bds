@@ -6,18 +6,19 @@
 
 ## Purpose
 
-<!-- Currently 108/200 -->
+<!-- Currently 165/200 -->
 
 <!-- Clearly state the main idea and intended purpose of your application. -->
 
+    The main idea and purpose of our application is to aid offer a service for users to build and maintain a deck of cards for the popular game, Magic The Gathering. We plan to offer the ability of our users to create a multitude of decks for differing formats to their specification. The application will also aid users in the discovery of cards, using an API of a popular site, Scryfall. The search feature of our application will allow users to discover new cards and add them into their decks.
+
 <!-- Explain a problem your application aims to solve and why it is important. -->
 
-    The main idea and purpose of our application is to aid offer a service for users to build and maintain a deck of cards from the popular game, Magic The Gathering. We plan to offer the ability of our users to create a multitude of decks for differing formats to their specification. The application will also aid users in the discovery of cards, using an API of a popular site, Scryfall. The search feature of our application will allow users to discover new cards and add them into their decks. This application will tend to the needs of deck builders to help them organize and enjoy their hobby.
+     This application will tend to the needs of deck builders to help them organize and enjoy their hobby. This process can be tedious for the experienced deck builder and even more so for the average user and those new to the hobby. Our aim is to streamline these processes by offering a quick and a most-in-one website that allows users to search for cards, add cards to decks, and quickly swap between their decks. The streamlined version of deck building our application will offer allows those who enjoy the hobby, and those that want to enjoy the hobby,
 
 
 ## Users
 
- <!-- Currently 192/200 -->
 
 <!-- Identify the primary users of your application, including their background or needs.-->
 
@@ -25,7 +26,7 @@
 
 <!-- Justify how your application will benefit these users and improve their experience.-->
 
-	We must accommodate many features that are expected of a typical deck building site; a way to create decks, manage decks, view cards, add cards to build out their decks, and a way to view their created decks.
+	We must accommodate many features that are expected of a typical deck building site; a way to create and manage decks, view cards, add cards to build out their decks, and a way to view a users created decks.
 
     1. Decks can be created and managed by the user on the homepage or in the user's Library.
 
@@ -33,10 +34,18 @@
 
     3. Users may view their decks by a deck list, titled ‘My Decks’ on the homepage or in their library, to see their collection of built decks.
 
+    Needs other than the main features of our site:
+
+    1. Valid descriptors for screen readers.
+
+    2. Easy navigation for non-mouse users.
+
+    3. Meet A11y guidelines to support accessibility.
+
 
 ## Features
 
-<!-- Currently 200/200 -->
+
 
 <!-- Outline the core functionalities of your application and explain how they will work.-->
 
@@ -49,7 +58,6 @@
 
 ## Data
 
-<!-- Currently 216/200 -->
 
 <!-- Describe the types of data that users will create, read, update, and delete (CRUD).-->
 
