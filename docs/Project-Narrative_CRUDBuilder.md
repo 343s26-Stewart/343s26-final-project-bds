@@ -6,7 +6,6 @@
 
 ## Purpose
 
-<!-- Currently 165/200 -->
 
 <!-- Clearly state the main idea and intended purpose of your application. -->
 
@@ -14,7 +13,7 @@
 
 <!-- Explain a problem your application aims to solve and why it is important. -->
 
-     This application will tend to the needs of deck builders to help them organize and enjoy their hobby. This process can be tedious for the experienced deck builder and even more so for the average user and those new to the hobby. Our aim is to streamline these processes by offering a quick and a most-in-one website that allows users to search for cards, add cards to decks, and quickly swap between their decks. The streamlined version of deck building our application will offer allows those who enjoy the hobby, and those that want to enjoy the hobby,
+     This application will tend to the needs of deck builders to help them organize and enjoy their hobby. This process can be tedious for the experienced deck builder and even more so for the average user and those new to the hobby. Our aim is to streamline these processes by offering a quick and a most-in-one website that allows users to search for cards, add cards to decks, and quickly swap between their decks. The streamlined version of deck building our application will offer allows those who enjoy the hobby, and those that want to enjoy the hobby.
 
 
 ## Users
