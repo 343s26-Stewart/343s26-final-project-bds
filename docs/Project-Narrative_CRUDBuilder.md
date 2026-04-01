@@ -2,7 +2,8 @@
 
 1. Homepage
 2. Search Page
-3. Library ?
+3. Builder
+4. library
 
 ## Purpose
 
@@ -31,7 +32,7 @@
 
     2. Users can view cards and add cards to their deck in our search function.
 
-    3. Users may view their decks by a deck list, titled ‘My Decks’ on the homepage or in their library, to see their collection of built decks.
+    3. Users may view their decks by a deck list, titled ‘My Decks’ on the homepage, to see their collection of built decks.
 
     Needs other than the main features of our site:
 
@@ -48,7 +49,7 @@
 
 <!-- Outline the core functionalities of your application and explain how they will work.-->
 
-    The Features our group plans to implement, at the moment, are a search function for cards, a deck builder, and a place to view and manage decks. Our search function will allow users to find cards based on their mana cost, color identity, name, and even the set they belong to. The deck builder will accommodate the prime formats of the hobby and allow users to build, maintain, and update their favorite decks with any cards they wish to add or swap. The library function will allow users to view the decks they have built and manage them.
+    The Features our group plans to implement, at the moment, are a search function for cards, a deck builder, and a place to view and manage decks. Our search function will allow users to find cards based on their mana cost, color identity, name, and even the set they belong to. The deck builder will accommodate the prime formats of the hobby and allow users to build, maintain, and update their favorite decks with any cards they wish to add or swap. The library will allow users to view their decks they have built and manage them.
 
 <!-- Provide a concrete example demonstrating how the application fulfills its purpose.-->
 
