@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrudBuilder</title>
+    <link rel="icon" href="https://fav.mhciael.com/📦">
+    <link rel="stylesheet" href="../Styles/style.css">
+</head>
+
+<body>
+    <header>
+        <!-- Title Bar -->
+        <h1 class="title">CrudBuilder</h1>
+        <!-- nav section -->
+        <nav class="nav">
+            <ul class="nav-list">
+                <li><a href="./Pages/Library.html">Library</a></li>
+                <li><a href="./Pages/search.html">Search</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Deck list -->
+        <sidebar class="sidebar" id="decklist">
+            <h2>Deck List</h2>
+            <ul id="deck-list-items">
+                <!-- Deck list items will be dynamically added here -->
+            </ul>
+        </sidebar>
+        <!-- main section deckbuilder -->
+        <div class="main-content">
+            <h2>Deck Builder</h2>
+            <div class="deck-builder">
+                <!-- Deck builder content goes here -->
+                <div>
+                    <h3 class="hidden">Artifacts</h3>
+                </div>
+                <div>
+                    <h3 class="hidden">Creatures</h3>
+                </div>
+                <div>
+                    <h3 class="hidden">Enchantments</h3>
+                </div>
+                <div>
+                    <h3 class="hidden">Instants</h3>
+                </div>
+                <div>
+                    <h3 class="hidden">Sorceries</h3>
+                </div>
+                <div>
+                    <h3 class="hidden">Planeswalkers</h3>
+                </div>
+                <div>
+                    <h3 class="hidden">Land</h3>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- stats; mana curve, land ratio -->
+    <footer>
+        <div class="stats hidden">
+            <h2>Deck Stats</h2>
+            <p id="mana-curve">Mana Curve: </p>
+            <p id="land-ratio">Land Ratio: </p>
+        </div>
+    </footer>
+</body>
+
+</html>
