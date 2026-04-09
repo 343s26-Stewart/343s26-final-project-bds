@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CrudBuilder</title>
     <link rel="icon" href="https://fav.mhciael.com/📦">
-    <link rel="stylesheet" href="../Styles/style.css">
+    <link rel="stylesheet" href="./Styles/style.css">
 </head>
 
 <body>
     <header>
         <!-- Title Bar -->
-        <h1 class="title">CrudBuilder</h1>
+        <h1 class="title">📦CrudBuilder</h1>
         <!-- nav section -->
         <nav class="nav">
             <ul class="nav-list">
@@ -24,17 +24,18 @@
 
     <main>
         <!-- Deck list -->
-        <sidebar class="sidebar" id="decklist">
+        <sidebar class="decklist">
             <h2>Deck List</h2>
             <ul id="deck-list-items">
                 <!-- Deck list items will be dynamically added here -->
             </ul>
         </sidebar>
         <!-- main section deckbuilder -->
-        <div class="main-content">
+
+        <section class="deck-builder">
             <h2>Deck Builder</h2>
-            <div class="deck-builder">
-                <!-- Deck builder content goes here -->
+            <!-- Deck builder content goes here -->
+            <section id="Deck-Builder-Content">
                 <div>
                     <h3 class="hidden">Artifacts</h3>
                 </div>
@@ -56,17 +57,28 @@
                 <div>
                     <h3 class="hidden">Land</h3>
                 </div>
-            </div>
+            </section>
+        </section>
 
-        </div>
+        <sidebar class="card-preview">
+            <h2>Card Preview</h2>
+            <!-- Card preview content goes here -->
+            <aside class="card-preview-content">
+                <!-- Card details will be dynamically added here -->
+                <img id="card-image" src="" alt="Card Image" class="hidden">
+                <h3 id="card-name" class="hidden">Card Name</h3>
+                <p id="card-text" class="hidden">Card Text</p>
+            </aside>
+        </sidebar>
+
     </main>
 
     <!-- stats; mana curve, land ratio -->
     <footer>
-        <div class="stats hidden">
+        <div class="stats">
             <h2>Deck Stats</h2>
-            <p id="mana-curve">Mana Curve: </p>
-            <p id="land-ratio">Land Ratio: </p>
+            <h3 id="mana-curve">Mana Curve: </h3>
+            <h3 id="land-ratio">Land Ratio: </h3>
         </div>
     </footer>
 </body>
