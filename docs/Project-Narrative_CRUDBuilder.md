@@ -2,8 +2,7 @@
 
 1. Homepage
 2. Search Page
-3. Builder
-4. library
+3. library
 
 ## Purpose
 
