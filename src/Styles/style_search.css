@@ -1,0 +1,72 @@
+/* Body */
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font);
+    margin: 0;
+    padding: 0;
+}
+
+/* header */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px;
+
+}
+
+header>* {
+    border-bottom: 2px solid white;
+}
+
+/* list of navigation items */
+header ul {
+    padding: 5px;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+/* list item spacing */
+header ul li {
+    margin: 0 20px;
+}
+
+/* main styling */
+main {
+    display: flex;
+    flex-direction: row;
+    min-height: 80vh;
+}
+
+
+
+/* Decklist */
+.decklist {
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.decklist h2 {
+    border-bottom: 2px solid white;
+    padding-left: 10px;
+}
+
+
+/* search area */
+.search-section {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+}
+
+.search-section h2 {
+    padding-left: 10px;
+}
+
+.search-section form {
+    padding-left: 15px;
+}

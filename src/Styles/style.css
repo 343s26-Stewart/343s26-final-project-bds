@@ -1,0 +1,21 @@
+/* Global Variables */
+:root {
+    /* design light mode / dark mode ? */
+    --primary-color: #2E3270;
+    --font: 'Arial', sans-serif;
+}
+
+/* anchor tags */
+a:link {
+    color: orange;
+}
+
+a:visited {
+    color: orangered;
+}
+
+
+/*Hiding unused elements for now*/
+.hidden {
+    display: none;
+}

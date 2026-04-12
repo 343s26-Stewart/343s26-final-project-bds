@@ -4,10 +4,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Search</title>
+    <link rel="icon" href="https://fav.mhciael.com/📦">
+    <link rel="stylesheet" href="../Styles/style.css">
+    <link rel="stylesheet" href="../Styles/style_search.css">
 </head>
 
 <body>
+
+    <header>
+        <!-- Title Bar -->
+        <h1 class="title">Search</h1>
+        <!-- nav section -->
+        <nav class="nav">
+            <ul class="nav-list">
+                <li><a href="./library.html">Library</a></li>
+                <li><a href="./index.html">CRUDBuilder</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="decklist">
+            <h2>Deck List</h2>
+            <ul id="deck-list-items">
+                <!-- Deck list items will be dynamically added here -->
+            </ul>
+        </section>
+        <!-- Search Section -->
+        <section class="search-section">
+            <h2>Search for Cards</h2>
+            <form id="search-form">
+                <input type="text" id="search-input" placeholder="Enter card name..." required>
+                <button type="submit">Search</button>
+            </form>
+            <div id="search-results">
+                <!-- Search results will be displayed here -->
+            </div>
+        </section>
+    </main>
 
 </body>
 
