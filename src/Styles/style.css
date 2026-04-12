@@ -1,27 +1,8 @@
-/* Header styling */
-header {
-    background-color: #2c2f3d;
-    color: white;
-    padding: 10px;
-
-}
-
-/* give every child a white underline */
-header>* {
-    border-bottom: 2px solid white;
-}
-
-/* list of navigation items */
-header ul {
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: row;
-}
-
-/* list item spacing ... maybe just padding ? */
-header ul li {
-    margin: 0 20px;
+/* Global Variables */
+:root {
+    /* design light mode / dark mode ? */
+    --primary-color: #2E3270;
+    --font: 'Arial', sans-serif;
 }
 
 /* anchor tags */
@@ -33,85 +14,6 @@ a:visited {
     color: orangered;
 }
 
-/* Body styling */
-body {
-    display: flex;
-    flex-direction: column;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-
-}
-
-/*deck building area styling*/
-main {
-    display: flex;
-    flex-direction: row;
-    height: 100%;
-    min-height: 80vh;
-}
-
-
-/*deck builder styling*/
-
-.deck-builder {
-    display: flex;
-    flex-direction: column;
-    width: 70%;
-    height: 100%;
-}
-
-.deck-builder h2 {
-    border-bottom: 2px solid black;
-}
-
-#Deck-Builder-Content {
-    height: 100%;
-}
-
-/*card preview styling*/
-
-.card-preview {
-    width: 20%;
-
-
-}
-
-.card-preview h2 {
-    border-bottom: 2px solid black;
-}
-
-sidebar.card-preview aside {
-    border-left: 2px solid black;
-}
-
-
-/*Sidebar decklist styling*/
-sidebar.decklist {
-    padding-left: 10px;
-    padding-right: 10px;
-    width: 10%;
-    background-color: #2c2f3d;
-    color: white;
-
-}
-
-
-
-/*give the header an underline*/
-sidebar.decklist h2 {
-    border-bottom: 2px solid white;
-}
-
-/* area to display deck content */
-
-
-/*Display statistics based on the deck*/
-footer {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
 
 /*Hiding unused elements for now*/
 .hidden {
