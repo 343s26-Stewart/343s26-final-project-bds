@@ -4,10 +4,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Library</title>
+    <link rel="icon" href="https://fav.mhciael.com/📦">
+    <link rel="stylesheet" href="../Styles/style.css">
+    <link rel="stylesheet" href="../Styles/style_library.css">
 </head>
 
 <body>
+    <header>
+        <!-- Title Bar -->
+        <h1 class="title">📦Library</h1>
+        <!-- nav section -->
+        <nav class="nav">
+            <ul class="nav-list">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./search.html">Search</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="library-content">
+            <h2>Deck Library</h2>
+            <!-- Deck library content goes here -->
+            <div id="deck-library">
+                <!-- Deck items will be dynamically added here -->
+                <div class="standard">
+                    <h3 class="hidden">Standard</h3>
+                    <ul class="decklist hidden" id="standard-decks">
+                    </ul>
+                </div>
+                <div class="modern">
+                    <h3 class="hidden">Modern</h3>
+                    <ul class="decklist hidden" id="modern-decks">
+                    </ul>
+                </div>
+                <div class="commander">
+                    <h3 class="hidden">Commander</h3>
+                    <ul class="decklist hidden" id="commander-decks">
+                    </ul>
+                </div>
+                <div class="pauper">
+                    <h3 class="hidden">Pauper</h3>
+                    <ul class="decklist hidden" id="pauper-decks">
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
 
 </body>
 
