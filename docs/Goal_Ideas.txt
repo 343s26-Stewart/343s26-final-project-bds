@@ -1,0 +1,73 @@
+Intermediate:
+
+I24: Added data export feature (download as JSON or text file)
+
+    Assessment: Users can click a button to download current data/results as a file to their compute
+
+    
+I23: Implemented favorite/bookmark functionality with localStorage (or OPFS) persistence
+
+    Assessment: Users can mark items as favorites, favorites persist after page reload, can be viewed separately
+
+
+I22: Created interactive elements with hover/focus states
+
+    Assessment: Buttons, links, and interactive elements visually change on mouse hover and keyboard focus
+
+
+I21: Added user preference settings that persist in localStorage (or OPFS)
+
+    Assessment: Users can modify settings (theme, display options, etc.) that save and restore on page reload
+
+
+I20: Implemented pagination or “load more” functionality for large datasets
+
+    Assessment: Data is presented in chunks with navigation controls or load-more button for additional content
+
+
+I19: Created multiple data display formats (list view, grid view, cards, etc.)
+
+    Assessment: Users can toggle between 2+ distinct visual layouts for the same data without page reload
+
+
+I17: Implemented data sorting capabilities (by date, name, category, etc.)
+
+    Assessment: Users can click buttons/dropdown to reorder displayed data by different criteria
+
+
+I13: Added error handling for API failures with user-friendly messages
+
+    Assessment: When API fails (test by disconnecting internet), application displays helpful error message instead of crashing
+
+I14: Implemented loading indicators during API requests
+
+    Assessment: Visible loading spinner, progress bar, or “loading…” text appears during API calls
+
+I15: Created a search or filter functionality for displayed data
+
+    Assessment: Users can enter search terms or select filters that reduce/modify the displayed dataset
+
+I16: Added form validation with clear error messages
+
+    Assessment: Invalid form inputs trigger specific error messages, form submission is prevented until corrected
+
+Stretch:
+
+S30: Created data visualization components (charts, graphs, interactive maps)
+
+    Assessment: Application displays data in visual chart/graph format using canvas, SVG, or charting library
+
+
+S33: Created image/file upload and preview capabilities
+
+    Assessment: Users can select files from their device, preview appears in the application
+
+
+S34: Built a single-page application with client-side routing
+
+    Assessment: URL changes without page reload, browser back/forward buttons work, different URLs show different content
+
+
+S45: Added touch/gesture support for mobile interactions
+
+    Assessment: Swipe, pinch, or other touch gestures work on mobile devices and trigger specific actions
