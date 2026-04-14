@@ -36,16 +36,23 @@
             <h2>Search for Cards</h2>
             <form id="search-form">
                 <input type="text" id="search-input" placeholder="Enter card name..." required>
-                <button type="submit">Search</button>
+                <button type="submit" id="search-submit">Search</button>
             </form>
-            <div id="search-results">
-                <!-- Search results will be displayed here -->
-            </div>
+            <section id="loading-indicator" class="hidden">
+            </section>
+            <section id="error-message" class="hidden">
+            </section>
+
+        </section>
+        <section id="search-results">
+            <!-- Search results will be displayed here -->
         </section>
     </main>
 
 </body>
 
-<script src="../Scripts/search.js"></script>
+<script src="../Scripts/library.js"></script>
+
+<script src="../Scripts/query_function.js"></script>
 
 </html>
