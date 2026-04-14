@@ -14,7 +14,7 @@
 
     <header>
         <!-- Title Bar -->
-        <h1 class="title">Search</h1>
+        <h1 class="title">📦Search</h1>
         <!-- nav section -->
         <nav class="nav">
             <ul class="nav-list">
@@ -42,17 +42,22 @@
             </section>
             <section id="error-message" class="hidden">
             </section>
+            <section id="search-results">
+                <!-- Search results will be displayed here -->
+                <template id="card-template">
+                    <div class="card-result">
+                        <img src="" alt="Card Image" class="card-image">
+                        <label class="card-name"></label>
+                    </div>
+                </template>
+            </section>
+        </section>
 
-        </section>
-        <section id="search-results">
-            <!-- Search results will be displayed here -->
-        </section>
     </main>
 
 </body>
 
-<script src="../Scripts/library.js"></script>
-
 <script src="../Scripts/query_function.js"></script>
+<script src="../Scripts/search_page.js"></script>
 
 </html>

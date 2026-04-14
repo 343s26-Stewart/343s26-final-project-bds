@@ -74,3 +74,20 @@ main {
 .search-section section {
     padding-left: 20px;
 }
+
+/* search results */
+#search-results {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+/* individual card styling */
+.card-result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    width: 300px;
+}
