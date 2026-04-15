@@ -98,4 +98,15 @@ document.addEventListener("DOMContentLoaded", () => {
             await queryAPI();
         }, 4500);
     });
+
+    const params = new URLSearchParams(window.location.search);
+    const queryFromUrl = params.get("query");
+
+    if (queryFromUrl) {
+        input.value = queryFromUrl;
+        displayLoading();
+        window.setTimeout(async () => {
+            await queryAPI();
+        }, 4500);
+    }
 });
