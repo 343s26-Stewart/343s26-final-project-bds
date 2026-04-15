@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRUDBuilder</title>
     <link rel="icon" href="https://fav.mhciael.com/📦">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700&display=swap">
     <link rel="stylesheet" href="../Styles/style.css">
     <link rel="stylesheet" href="../Styles/style_index.css">
 </head>
@@ -34,35 +37,53 @@
         <!-- main section deckbuilder -->
 
         <section class="deck-builder">
-            <h2>Deck Builder</h2>
+            <h2 class="db-heading">Deck Builder</h2>
             <!-- Deck builder content goes here -->
             <section id="Deck-Builder-Content">
-                <div>
-                    <h3 class="hidden">Artifacts</h3>
+                <h2 id="deck-name"></h2>
+                <div id="deck-form">
+                    <div id="name-form">
+                        <input type="text" id="name-input" placeholder="Enter deck name...">
+                        <button type="submit" id="name-submit">Submit</button>
+                    </div>
+                    <div id="search-form">
+                        <input type="text" id="search-input" placeholder="Enter card name...">
+                        <button type="submit" id="search-submit">Search</button>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="hidden">Creatures</h3>
+                <div class="hidden" id="artifacts">
+                    <h3 id="artifacts-heading">Artifacts</h3>
+                    <ul id="artifacts-list"></ul>
                 </div>
-                <div>
-                    <h3 class="hidden">Enchantments</h3>
+                <div class="hidden" id="creatures">
+                    <h3 id="creatures-heading">Creatures</h3>
+                    <ul id="creatures-list"></ul>
                 </div>
-                <div>
-                    <h3 class="hidden">Instants</h3>
+                <div class="hidden" id="enchantments">
+                    <h3 id="enchantments-heading">Enchantments</h3>
+                    <ul id="enchantments-list"></ul>
                 </div>
-                <div>
-                    <h3 class="hidden">Sorceries</h3>
+                <div class="hidden" id="instants">
+                    <h3 id="instants-heading">Instants</h3>
+                    <ul id="instants-list"></ul>
                 </div>
-                <div>
-                    <h3 class="hidden">Planeswalkers</h3>
+                <div class="hidden" id="sorceries">
+                    <h3 id="sorceries-heading">Sorceries</h3>
+                    <ul id="sorceries-list"></ul>
                 </div>
-                <div>
-                    <h3 class="hidden">Land</h3>
+                <div class="hidden" id="planeswalkers">
+                    <h3 id="planeswalkers-heading">Planeswalkers</h3>
+                    <ul id="planeswalkers-list"></ul>
+                </div>
+                <div class="hidden" id="lands">
+                    <h3 id="lands-heading">Lands</h3>
+                    <ul id="lands-list"></ul>
                 </div>
             </section>
         </section>
 
         <sidebar class="card-preview">
-            <h2>Card Preview</h2>
+            <h2 class="db-heading">Card Preview</h2>
             <!-- Card preview content goes here -->
             <aside class="card-preview-content">
                 <!-- Card details will be dynamically added here -->
@@ -83,5 +104,5 @@
         </div>
     </footer>
 </body>
-
+<script src="../Scripts/deck_builder.js"></script>
 </html>

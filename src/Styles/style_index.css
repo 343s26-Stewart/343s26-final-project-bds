@@ -52,8 +52,19 @@ main {
     height: 100%;
 }
 
-.deck-builder h2 {
+.db-heading {
     border-bottom: 2px solid black;
+    text-align: center;
+}
+
+#deck-name {
+    padding-left: 10px;
+}
+
+.deck-builder #deck-form {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
 }
 
 
@@ -66,6 +77,7 @@ main {
 
 .card-preview h2 {
     border-bottom: 2px solid black;
+    text-align: center;
 }
 
 sidebar.card-preview aside {
