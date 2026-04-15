@@ -23,65 +23,67 @@
         </nav>
     </header>
 
+
     <main>
         <!-- Deck list -->
-        <sidebar class="decklist">
+        <sidebar id="decklist">
             <h2>Deck List</h2>
             <ul id="deck-list-items">
                 <!-- Deck list items will be dynamically added here -->
             </ul>
         </sidebar>
-        <!-- main section deckbuilder -->
-
-        <section class="deck-builder">
-            <h2>Deck Builder</h2>
-            <!-- Deck builder content goes here -->
-            <section id="Deck-Builder-Content">
-                <div>
-                    <h3 class="hidden">Artifacts</h3>
-                </div>
-                <div>
-                    <h3 class="hidden">Creatures</h3>
-                </div>
-                <div>
-                    <h3 class="hidden">Enchantments</h3>
-                </div>
-                <div>
-                    <h3 class="hidden">Instants</h3>
-                </div>
-                <div>
-                    <h3 class="hidden">Sorceries</h3>
-                </div>
-                <div>
-                    <h3 class="hidden">Planeswalkers</h3>
-                </div>
-                <div>
-                    <h3 class="hidden">Land</h3>
-                </div>
+        <section id="deck-info">
+            <section id="deck-builder">
+                <section id="building-area">
+                    <!-- main section deckbuilder -->
+                    <h2>Deck Builder</h2>
+                    <!-- Deck builder content goes here -->
+                    <section id="Deck-Builder-Content">
+                        <div>
+                            <h3 class="hidden">Artifacts</h3>
+                        </div>
+                        <div>
+                            <h3 class="hidden">Creatures</h3>
+                        </div>
+                        <div>
+                            <h3 class="hidden">Enchantments</h3>
+                        </div>
+                        <div>
+                            <h3 class="hidden">Instants</h3>
+                        </div>
+                        <div>
+                            <h3 class="hidden">Sorceries</h3>
+                        </div>
+                        <div>
+                            <h3 class="hidden">Planeswalkers</h3>
+                        </div>
+                        <div>
+                            <h3 class="hidden">Land</h3>
+                        </div>
+                    </section>
+                </section>
+                <sidebar class="card-preview">
+                    <h2>Card Preview</h2>
+                    <!-- Card preview content goes here -->
+                    <aside class="card-preview-content">
+                        <!-- Card details will be dynamically added here -->
+                        <img id="card-image" src="" alt="Card Image" class="hidden">
+                        <h3 id="card-name" class="hidden">Card Name</h3>
+                        <p id="card-text" class="hidden">Card Text</p>
+                    </aside>
+                </sidebar>
+            </section>
+            <!-- stats; mana curve, land ratio -->
+            <section class="stats">
+                <h2>Deck Stats</h2>
+                <section id="stats-content">
+                    <!-- Stats content goes here -->
+                    <h3 id="mana-curve">Mana Curve: </h3>
+                    <h3 id="land-ratio">Land Ratio: </h3>
+                </section>
             </section>
         </section>
-
-        <sidebar class="card-preview">
-            <h2>Card Preview</h2>
-            <!-- Card preview content goes here -->
-            <aside class="card-preview-content">
-                <!-- Card details will be dynamically added here -->
-                <img id="card-image" src="" alt="Card Image" class="hidden">
-                <h3 id="card-name" class="hidden">Card Name</h3>
-                <p id="card-text" class="hidden">Card Text</p>
-            </aside>
-        </sidebar>
-
     </main>
-
-    <!-- stats; mana curve, land ratio -->
-    <footer>
-        <div class="stats">
-            <h2>Deck Stats</h2>
-            <h3 id="mana-curve">Mana Curve: </h3>
-            <h3 id="land-ratio">Land Ratio: </h3>
-        </div>
-    </footer>
 </body>
 
 </html>

@@ -36,7 +36,7 @@ header ul li {
 main {
     display: flex;
     flex-direction: row;
-    min-height: 80vh;
+    min-height: 85vh;
 }
 
 
@@ -81,6 +81,7 @@ main {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    min-height: 60%;
 }
 
 /* individual card styling */
@@ -90,4 +91,13 @@ main {
     align-items: center;
     margin: 10px;
     width: 300px;
+}
+
+
+/* scroll buttons*/
+#content-scroll-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 20px;
 }
