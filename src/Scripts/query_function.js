@@ -71,7 +71,6 @@ async function queryAPI() {
     try { // see if server responds
         const response = await fetch(`${api}${searchTerm}`);
         const data = await response.json();
-        console.log(data);
         if (callBackFunction) { // make sure call back is set
             callBackFunction(data); // transform data
         }

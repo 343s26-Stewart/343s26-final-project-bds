@@ -16,19 +16,46 @@ const params = new URLSearchParams(window.location.search);
 const deckName = params.get("deck");
 
 
+var card_data;
+
 //call back function for query results
 setCallBackFunction(displayResults);
 
-function displayResults(data) {
+async function displayResults(data) {
+
+    card_data = data;
+
+    const previousCards = document.getElementsByClassName("card-result");
+
+    if (previousCards.length > 0) {
+        Array.from(previousCards).forEach((card) => {
+            card.remove();
+        });
+    }
+
 
     // proccess data up to page size
 
 
     // display card image and name
-    const dataPiece = data.data.slice(curitem, curitem + pageSize);
 
+    //add support here for possible fetching of next page
+    if (curitem + pageSize > card_data.data.length && card_data.has_more === true) {
 
-    curitem += pageSize;
+        //get slice of data left to display
+        const cards = card_data.data;
+
+        //make fetch call ?
+        const nextData = await fetch(card_data.next_page);
+        card_data = await nextData.json();
+        console.log(card_data);
+
+        card_data.data = cards.concat(card_data.data); // combine data pieces to display
+
+    }
+
+    const dataPiece = card_data.data.slice(curitem, curitem + pageSize);
+
 
     dataPiece.forEach((card) => {
         const cardElement = template.content.cloneNode(true);
@@ -37,21 +64,7 @@ function displayResults(data) {
         const cardName = cardElement.querySelector(".card-name");
         cardImage.src = card.image_uris.small;
         cardName.textContent = card.name;
-
-        // Creates the add card button if searched from deck builder
-        if (deckName) {
-            const addButton = document.createElement("button");
-            addButton.textContent = `Add to ${deckName}`;
-            addButton.className = "add-card-btn";
-            
-            // Adds JSON card data to button element, ex) <button class="add-card-btn" data-card='{"name":"Lightning Bolt","image_uris":{...}}'>
-            addButton.dataset.card = JSON.stringify(card);
-            //cardElement.appendChild(addButton);
-            cardContainer.appendChild(addButton);
-        }
-
         results.appendChild(cardElement);
-
         //add event listener to card to display card details and ability to add to deck
 
     });
@@ -70,3 +83,14 @@ document.addEventListener("click", (event) => {
 });
 
 //add ability to load more results when user presses a button to go forward/back through results
+
+
+document.getElementById("scroll-left").addEventListener("click", () => {
+    curitem -= pageSize;
+    displayResults(card_data);
+});
+
+document.getElementById("scroll-right").addEventListener("click", () => {
+    curitem += pageSize;
+    displayResults(card_data);
+});
