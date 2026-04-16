@@ -72,8 +72,9 @@ main {
 
 .card-preview {
     width: 20%;
-
+    
 }
+
 
 .card-preview h2 {
     border-bottom: 2px solid black;
@@ -81,7 +82,8 @@ main {
 }
 
 sidebar.card-preview aside {
-    border-left: 2px solid black;
+    /* border-left: 2px solid black; */
+    
 }
 
 
