@@ -27,8 +27,9 @@ function getInput() {
         errorMessage.classList.toggle("hidden");
     }
     //get the input from user
-    const searchTerm = input.value;
-    return searchTerm;
+    const params = new URLSearchParams(window.location.search);
+    const query = params.get("query");
+    return query;
 }
 
 function displayLoading() {
@@ -81,31 +82,3 @@ async function queryAPI() {
         return;
     }
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-    searchForm.addEventListener("submit", async (event) => {
-        event.preventDefault();
-
-
-        // display loading indicator
-
-        displayLoading(); //Loading -> Loading. -> Loading.. -> Loading...
-        //  // Loading indicator will show for 3 seconds
-
-        // query api with search term after 4.5 seconds
-        window.setTimeout(async () => {
-            await queryAPI();
-        }, 4500);
-    });
-
-    const params = new URLSearchParams(window.location.search);
-    const queryFromUrl = params.get("query");
-
-    if (queryFromUrl) {
-        input.value = queryFromUrl;
-        displayLoading();
-        window.setTimeout(async () => {
-            await queryAPI();
-        }, 4500);
-    }
-});

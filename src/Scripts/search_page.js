@@ -3,7 +3,7 @@
 // global vars
 
 // size of page
-const pageSize = 20;
+const pageSize = 21;
 var curitem = 0;
 
 
@@ -62,11 +62,28 @@ async function displayResults(data) {
         const cardContainer = cardElement.querySelector(".card-result");
         const cardImage = cardElement.querySelector(".card-image");
         const cardName = cardElement.querySelector(".card-name");
-        cardImage.src = card.image_uris.small;
-        cardName.textContent = card.name;
+        console.log(card);
+        if (card.image_uris !== undefined) {
+            cardImage.src = card.image_uris.small;
+            cardName.textContent = card.name;
+        } else if (card.card_faces !== undefined) { // add support for showing specific faces
+            cardImage.src = card.card_faces[0].image_uris.small;
+            cardName.textContent = card.card_faces[0].name;
+        }
+
         results.appendChild(cardElement);
         //add event listener to card to display card details and ability to add to deck
 
+        if (deckName) {
+            const addButton = document.createElement("button");
+            addButton.textContent = `Add to ${deckName}`;
+            addButton.className = "add-card-btn";
+
+            // Adds JSON card data to button element, ex) <button class="add-card-btn" data-card='{"name":"Lightning Bolt","image_uris":{...}}'>
+            addButton.dataset.card = JSON.stringify(card);
+            //cardElement.appendChild(addButton);
+            cardContainer.appendChild(addButton);
+        }
     });
 }
 
@@ -82,6 +99,30 @@ document.addEventListener("click", (event) => {
     window.location.href = "./index.html";
 });
 
+document.getElementById("search-form").addEventListener("submit", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    console.log("hello");
+    console.log(document.getElementById("search-input").value);
+
+
+    // window.location.href = new URL(`http://127.0.0.1:3000/343s26-final-project-bds/src/Pages/search.html?query=${encodeURIComponent(document.getElementById("search-input").value)}`);
+    // display loading indicator
+    const url = new URL(window.location.href);
+    url.searchParams.set('query', (document.getElementById("search-input").value));
+    window.history.pushState(null, '', url.toString());
+
+    displayLoading(); //Loading -> Loading. -> Loading.. -> Loading...
+    //  // Loading indicator will show for 3 seconds
+
+    // query api with search term after 4.5 seconds
+    window.setTimeout(async () => {
+        await queryAPI();
+    }, 4500);
+
+});
+
+
 //add ability to load more results when user presses a button to go forward/back through results
 
 
@@ -93,4 +134,20 @@ document.getElementById("scroll-left").addEventListener("click", () => {
 document.getElementById("scroll-right").addEventListener("click", () => {
     curitem += pageSize;
     displayResults(card_data);
+});
+
+
+// function to see if queried from deckbuilder
+document.addEventListener("DOMContentLoaded", () => {
+    const urlParams = new URLSearchParams(window.location.search);
+
+    if (urlParams.has("deck") && urlParams.has("query")) {
+        displayLoading(); //Loading -> Loading. -> Loading.. -> Loading...
+        //  // Loading indicator will show for 3 seconds
+
+        // query api with search term after 4.5 seconds
+        window.setTimeout(async () => {
+            await queryAPI();
+        }, 4500);
+    }
 });
