@@ -19,6 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const planeswalkersElem = document.getElementById("planeswalkers");
     const landsElem = document.getElementById("lands");
 
+    let selectedCardId = null;
+
     const typeSections = {
         artifact: {
         section: artifactsElem,
@@ -86,13 +88,26 @@ document.addEventListener("DOMContentLoaded", () => {
             const img = document.getElementById("card-image");
             const cardNameElem = document.getElementById("card-name");
             const cardTextElem = document.getElementById("card-text");
-            img.classList.toggle("hidden");
-            cardNameElem.classList.toggle("hidden");
-            cardTextElem.classList.toggle("hidden");
+            
+            const cardId = card.id || card.name; 
+
+            // if clicking the same card again, hide preview
+            if (selectedCardId === cardId) {
+                img.classList.add("hidden");
+                cardNameElem.classList.add("hidden");
+                cardTextElem.classList.add("hidden");
+                selectedCardId = null;
+                return;
+            }
+            
+            //show new card
             img.src = card.image_uris.small;
             cardNameElem.textContent = card.name;
-            cardTextElem.textContent = card.oracle_text;
-
+            cardTextElem.textContent = card.oracle_text || "";
+            img.classList.remove("hidden");
+            cardNameElem.classList.remove("hidden");
+            cardTextElem.classList.remove("hidden");
+            selectedCardId = cardId;
         });
 
         bucket.list.appendChild(li);
