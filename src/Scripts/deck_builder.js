@@ -81,6 +81,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const li = document.createElement("li");
         li.textContent = card.name;
+
+        li.addEventListener("click", () => {
+            const img = document.getElementById("card-image");
+            const cardNameElem = document.getElementById("card-name");
+            const cardTextElem = document.getElementById("card-text");
+            img.classList.toggle("hidden");
+            cardNameElem.classList.toggle("hidden");
+            cardTextElem.classList.toggle("hidden");
+            img.src = card.image_uris.small;
+            cardNameElem.textContent = card.name;
+            cardTextElem.textContent = card.oracle_text;
+
+        });
+
         bucket.list.appendChild(li);
 
         if (isFirstInSection) {
@@ -120,6 +134,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         window.location.href = `./search.html?deck=${encodeURIComponent(deckName)}&query=${encodeURIComponent(searchTerm)}`;
     })
+
+
 
 
 }) 
