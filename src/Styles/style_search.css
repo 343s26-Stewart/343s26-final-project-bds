@@ -55,6 +55,11 @@ main {
     padding-left: 10px;
 }
 
+/* operations */
+#operations {
+    display: flex;
+    flex-direction: row;
+}
 
 /* search area */
 .search-section {
@@ -73,6 +78,12 @@ main {
 
 .search-section section {
     padding-left: 20px;
+}
+
+/* shareable url */
+
+#shareable-url {
+    margin-left: 10px;
 }
 
 /* search results */

@@ -37,10 +37,13 @@
         <!-- Search Section -->
         <section class="search-section">
             <h2>Search for Cards</h2>
-            <form id="search-form">
-                <input type="text" id="search-input" placeholder="Enter card name..." required>
-                <button type="submit" id="search-submit">Search</button>
-            </form>
+            <section id="operations">
+                <form id="search-form">
+                    <input type="text" id="search-input" placeholder="Enter card name..." required>
+                    <button type="submit" id="search-submit">Search</button>
+                </form>
+                <button type="submit" id="shareable-url">Get Shareable URL</button>
+            </section>
             <section id="loading-indicator" class="hidden">
             </section>
             <section id="error-message" class="hidden">
@@ -55,8 +58,8 @@
                 </template>
             </section>
             <section id="content-scroll-buttons">
-                <button id="scroll-left" class="scroll-button">←</button>
-                <button id="scroll-right" class="scroll-button">→</button>
+                <button id="scroll-left" class="scroll-button hidden">←</button>
+                <button id="scroll-right" class="scroll-button hidden">→</button>
             </section>
         </section>
 

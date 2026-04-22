@@ -34,25 +34,23 @@ async function displayResults(data) {
     }
 
 
-    // proccess data up to page size
+    // proccess data up to page
 
 
-    // display card image and name
+    while (curitem + (pageSize * 2) >= card_data.data.length && card_data.has_more === true) {
 
-    //add support here for possible fetching of next page
-    if (curitem + pageSize > card_data.data.length && card_data.has_more === true) {
-
-        //get slice of data left to display
         const cards = card_data.data;
 
         //make fetch call ?
         const nextData = await fetch(card_data.next_page);
         card_data = await nextData.json();
-        console.log(card_data);
 
         card_data.data = cards.concat(card_data.data); // combine data pieces to display
-
     }
+
+    // display card image and name
+
+
 
     const dataPiece = card_data.data.slice(curitem, curitem + pageSize);
 
@@ -62,7 +60,6 @@ async function displayResults(data) {
         const cardContainer = cardElement.querySelector(".card-result");
         const cardImage = cardElement.querySelector(".card-image");
         const cardName = cardElement.querySelector(".card-name");
-        console.log(card);
         if (card.image_uris !== undefined) {
             cardImage.src = card.image_uris.small;
             cardName.textContent = card.name;
@@ -85,6 +82,26 @@ async function displayResults(data) {
             cardContainer.appendChild(addButton);
         }
     });
+
+
+    if (curitem + pageSize >= card_data.data.length) {
+        document.getElementById("scroll-right").classList.add("hidden");
+    } else {
+        document.getElementById("scroll-right").classList.remove("hidden");
+    }
+
+    if (curitem - pageSize < 0) {
+        document.getElementById("scroll-left").classList.add("hidden");
+    } else {
+        document.getElementById("scroll-left").classList.remove("hidden");
+    }
+}
+
+function routeToPage(pageNum) {
+
+    for (let i = 0; i < pageNum; i++) {
+        curitem += pageSize;
+    }
 }
 
 //Event listener for the add buttons
@@ -102,14 +119,16 @@ document.addEventListener("click", (event) => {
 document.getElementById("search-form").addEventListener("submit", (event) => {
     event.preventDefault();
     event.stopPropagation();
-    console.log("hello");
-    console.log(document.getElementById("search-input").value);
 
-
+    curitem = 0;
     // window.location.href = new URL(`http://127.0.0.1:3000/343s26-final-project-bds/src/Pages/search.html?query=${encodeURIComponent(document.getElementById("search-input").value)}`);
     // display loading indicator
     const url = new URL(window.location.href);
     url.searchParams.set('query', (document.getElementById("search-input").value));
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has("page")) {
+        url.searchParams.delete("page");
+    }
     window.history.pushState(null, '', url.toString());
 
     displayLoading(); //Loading -> Loading. -> Loading.. -> Loading...
@@ -129,11 +148,39 @@ document.getElementById("search-form").addEventListener("submit", (event) => {
 document.getElementById("scroll-left").addEventListener("click", () => {
     curitem -= pageSize;
     displayResults(card_data);
+    const url = new URL(window.location.href);
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has("page")) {
+        url.searchParams.set("page", parseInt(urlParams.get("page")) - 1);
+        window.history.pushState(null, '', url.toString());
+    }
 });
 
 document.getElementById("scroll-right").addEventListener("click", () => {
     curitem += pageSize;
     displayResults(card_data);
+    const url = new URL(window.location.href);
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has("page")) {
+        url.searchParams.set("page", parseInt(urlParams.get("page")) + 1);
+        window.history.pushState(null, '', url.toString());
+    } else {
+        url.searchParams.set("page", 1);
+        window.history.pushState(null, '', url.toString());
+    }
+});
+
+//shareable url button
+document.getElementById("shareable-url").addEventListener("click", (event) => {
+    event.preventDefault();
+
+    const url = new URL(window.location.href);
+
+    if (url.searchParams.has("deck")) {
+        url.searchParams.remove("deck");
+    }
+
+    alert(`Shareable URL:\n${url.toString()}`);
 });
 
 
@@ -141,9 +188,13 @@ document.getElementById("scroll-right").addEventListener("click", () => {
 document.addEventListener("DOMContentLoaded", () => {
     const urlParams = new URLSearchParams(window.location.search);
 
-    if (urlParams.has("deck") && urlParams.has("query")) {
+    if (urlParams.has("query")) {
         displayLoading(); //Loading -> Loading. -> Loading.. -> Loading...
         //  // Loading indicator will show for 3 seconds
+
+        if (urlParams.has("page")) {
+            routeToPage(parseInt(urlParams.get("page")));
+        }
 
         // query api with search term after 4.5 seconds
         window.setTimeout(async () => {
