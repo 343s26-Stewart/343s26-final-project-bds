@@ -25,19 +25,11 @@ async function displayResults(data) {
 
     card_data = data;
 
-    const previousCards = document.getElementsByClassName("card-result");
-
-    if (previousCards.length > 0) {
-        Array.from(previousCards).forEach((card) => {
-            card.remove();
-        });
-    }
+    //clear out old cards
+    deletePrevious()
 
 
-    // proccess data up to page
-
-
-    while (curitem + (pageSize * 2) >= card_data.data.length && card_data.has_more === true) {
+    while (curitem + pageSize >= card_data.data.length && card_data.has_more === true) {
 
         const cards = card_data.data;
 
@@ -48,10 +40,12 @@ async function displayResults(data) {
         card_data.data = cards.concat(card_data.data); // combine data pieces to display
     }
 
+    // check to see if curitem is still bigger and card_data has no more pages
+    // if (curitem  + pagsize >= card_data.data.length)
+    //  display error ("Improper request: The query does not have enough data to display");
+    //  return ?; we have to exit here
+
     // display card image and name
-
-
-
     const dataPiece = card_data.data.slice(curitem, curitem + pageSize);
 
 
@@ -104,6 +98,16 @@ function routeToPage(pageNum) {
     }
 }
 
+function deletePrevious() {
+    const previousCards = document.getElementsByClassName("card-result");
+
+    if (previousCards.length > 0) {
+        Array.from(previousCards).forEach((card) => {
+            card.remove();
+        });
+    }
+}
+
 //Event listener for the add buttons
 document.addEventListener("click", (event) => {
     // Not sure how much i like this condition, this listener is listening for every click on the page...
@@ -119,6 +123,8 @@ document.addEventListener("click", (event) => {
 document.getElementById("search-form").addEventListener("submit", (event) => {
     event.preventDefault();
     event.stopPropagation();
+
+    deletePrevious()
 
     curitem = 0;
     // window.location.href = new URL(`http://127.0.0.1:3000/343s26-final-project-bds/src/Pages/search.html?query=${encodeURIComponent(document.getElementById("search-input").value)}`);
@@ -144,27 +150,27 @@ document.getElementById("search-form").addEventListener("submit", (event) => {
 
 //add ability to load more results when user presses a button to go forward/back through results
 
-
+// go back to previous
 document.getElementById("scroll-left").addEventListener("click", () => {
     curitem -= pageSize;
-    displayResults(card_data);
+    displayResults(card_data); //redisplay
     const url = new URL(window.location.href);
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has("page")) {
-        url.searchParams.set("page", parseInt(urlParams.get("page")) - 1);
+    if (url.searchParams.has("page")) { // update page param
+        url.searchParams.set("page", parseInt(url.searchParams.get("page")) - 1);
         window.history.pushState(null, '', url.toString());
     }
 });
 
+
+// get more cards
 document.getElementById("scroll-right").addEventListener("click", () => {
     curitem += pageSize;
-    displayResults(card_data);
+    displayResults(card_data); //redisplay
     const url = new URL(window.location.href);
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has("page")) {
-        url.searchParams.set("page", parseInt(urlParams.get("page")) + 1);
+    if (url.searchParams.has("page")) { // update page param accordingly
+        url.searchParams.set("page", parseInt(url.searchParams.get("page")) + 1);
         window.history.pushState(null, '', url.toString());
-    } else {
+    } else { // set page param
         url.searchParams.set("page", 1);
         window.history.pushState(null, '', url.toString());
     }
@@ -172,19 +178,25 @@ document.getElementById("scroll-right").addEventListener("click", () => {
 
 //shareable url button
 document.getElementById("shareable-url").addEventListener("click", (event) => {
-    event.preventDefault();
+    event.preventDefault(); //do not edit the url
 
-    const url = new URL(window.location.href);
+    const url = new URL(window.location.href); // get url
 
-    if (url.searchParams.has("deck")) {
+    if (url.searchParams.has("deck")) { //remove deck parameter
         url.searchParams.remove("deck");
     }
 
-    alert(`Shareable URL:\n${url.toString()}`);
+    alert(`Shareable URL:\n${url.toString()}`); // give user url
 });
 
 
-// function to see if queried from deckbuilder
+// client side routing: see the event and update page based off that.
+
+
+// function to see if we need to search based off url params
+// these are obtained;
+// by routing from deckbuilder
+// obtaining a shareable url
 document.addEventListener("DOMContentLoaded", () => {
     const urlParams = new URLSearchParams(window.location.search);
 
@@ -192,7 +204,8 @@ document.addEventListener("DOMContentLoaded", () => {
         displayLoading(); //Loading -> Loading. -> Loading.. -> Loading...
         //  // Loading indicator will show for 3 seconds
 
-        if (urlParams.has("page")) {
+        if (urlParams.has("page")) { //need to display proper cards
+            //update curitem to proper page.
             routeToPage(parseInt(urlParams.get("page")));
         }
 
@@ -202,3 +215,28 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 4500);
     }
 });
+
+
+window.addEventListener("popstate", () => {
+    // see if param has query
+    deletePrevious();
+    const url = new URL(window.location.href);
+    if (url.searchParams.has("query")) {
+        // see if param has page
+        curitem = 0;
+        if (url.searchParams.has("page")) {
+            // handle page
+            routeToPage(url.searchParams.get("page"));
+        }
+
+        //display loading now
+        displayLoading()
+
+        // now query.
+        window.setTimeout(async () => {
+            await queryAPI();
+        }, 1000);
+    }
+
+
+})
