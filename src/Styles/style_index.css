@@ -34,6 +34,18 @@ header ul li {
     margin: 0 20px;
 }
 
+/* user control styling */
+
+#user-controls {
+    display: flex;
+    flex-direction: row;
+    display: flex;
+    margin: 0 10px;
+}
+
+#user-controls section {
+    padding: 0 10px;
+}
 
 /*deck building area styling*/
 main {
@@ -61,18 +73,12 @@ main {
     padding-left: 10px;
 }
 
-.deck-builder #deck-form {
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-}
-
 
 /*card preview styling*/
 
 .card-preview {
     width: 20%;
-    
+
 }
 
 
@@ -83,7 +89,7 @@ main {
 
 sidebar.card-preview aside {
     /* border-left: 2px solid black; */
-    
+
 }
 
 

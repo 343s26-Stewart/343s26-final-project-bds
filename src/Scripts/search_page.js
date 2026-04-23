@@ -114,9 +114,17 @@ document.addEventListener("click", (event) => {
     if (!event.target.classList.contains("add-card-btn")) return;
 
     const card = JSON.parse(event.target.dataset.card);
+
+    //current deck
     const deck = JSON.parse(localStorage.getItem("currentDeck")) || { name: "", cards: [] };
     deck.cards.push(card);
     localStorage.setItem("currentDeck", JSON.stringify(deck));
+
+    //all decks
+    const deckObj = JSON.parse(localStorage.getItem("decks"));
+    deckObj[deck.name].cards.push(card);
+    localStorage.setItem("decks", JSON.stringify(deckObj));
+
     window.location.href = "./index.html";
 });
 
