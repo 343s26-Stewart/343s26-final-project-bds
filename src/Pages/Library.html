@@ -34,23 +34,27 @@
             <!-- Deck library content goes here -->
             <div id="deck-library">
                 <!-- Deck items will be dynamically added here -->
-                <ul id="temp-deck-list-items"></ul>
-                <div class="standard hidden">
+                <div id="favorites" class="hidden">
+                    <h3>Favorties</h3>
+                    <ul class="decklist" id="favorite-decks">
+                    </ul>
+                </div>
+                <div id="standard" class="hidden">
                     <h3>Standard</h3>
                     <ul class="decklist" id="standard-decks">
                     </ul>
                 </div>
-                <div class="modern hidden">
+                <div id="modern" class="hidden">
                     <h3>Modern</h3>
                     <ul class="decklist" id="modern-decks">
                     </ul>
                 </div>
-                <div class="commander hidden">
+                <div id="commander" class="hidden">
                     <h3>Commander</h3>
                     <ul class="decklist" id="commander-decks">
                     </ul>
                 </div>
-                <div class="pauper hidden">
+                <div id="pauper" class="hidden">
                     <h3>Pauper</h3>
                     <ul class="decklist" id="pauper-decks">
                     </ul>
@@ -65,13 +69,13 @@
             </div>
         </template>
         <dialog id="image-upload-dialog">
-            <div id="image-form">
+            <form id="submit-image-form">
                 <label for="image-url-input">Enter Image URL:</label>
                 <input type="text" id="image-url-input" placeholder="https://example.com/image.jpg" required>
                 <button type="submit" id="upload-submit">Upload</button>
-                <button type="submit" id="submit-image">Submit</button>
+                <button type="submit" id="image-submit">Submit</button>
                 <button type="button" id="cancel-button">Cancel</button>
-            </div>
+            </form>
             <div id="image-preview-area">
                 <label for="image-preview">Image Preview:</label>
                 <img id="image-preview" src="" alt="Image Preview" class="hidden">

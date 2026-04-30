@@ -250,13 +250,13 @@ document.getElementById("favorite-button").addEventListener("click", () => {
     if (favorites !== null) {
         //if it exists
         const fav_list = JSON.parse(favorites);
-        fav_list[curdeck.name] = { cards: curdeck.cards };
+        fav_list[curdeck.name] = curdeck;
 
         //now store
         localStorage.setItem("favorites", JSON.stringify(fav_list));
     } else { // no exists
         var fav_deck = {};
-        fav_deck[curdeck.name] = { cards: curdeck.cards };
+        fav_deck[curdeck.name] = curdeck;
         localStorage.setItem("favorites", JSON.stringify(fav_deck));
     }
     // update the favorites section
