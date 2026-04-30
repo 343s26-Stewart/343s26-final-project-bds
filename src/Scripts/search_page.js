@@ -224,6 +224,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+// populate deck names from local storage to decklist
+document.addEventListener("DOMContentLoaded", () => {
+    const decks = localStorage.getItem("decks");
+    if (decks) {
+        const deckObject = JSON.parse(decks);
+        Object.keys(deckObject).forEach((deck) => {
+            const deckContainer = document.createElement("li");
+            deckContainer.className = "deck-container";
+            deckContainer.textContent = deck;
+            document.getElementById("deck-list-items").appendChild(deckContainer);
+        });
+    }
+});
+
 
 window.addEventListener("popstate", () => {
     // see if param has query
@@ -247,4 +261,4 @@ window.addEventListener("popstate", () => {
     }
 
 
-})
+});

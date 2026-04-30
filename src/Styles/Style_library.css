@@ -1,3 +1,8 @@
+/* hovering class */
+.hovered {
+    background-color: cornflowerblue;
+}
+
 /* Body styling */
 body {
     display: flex;
@@ -36,8 +41,52 @@ header ul li {
 
 
 /* main styling */
-main {
+.library-content {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+/* Library styling */
+#deck-library {
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Deck item styling */
+.deck-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.library-content ul {
+    list-style-type: none;
+}
+
+.decklist {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    max-width: 250px;
+}
+
+.deck-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/* Dialog styling */
+dialog img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
 }

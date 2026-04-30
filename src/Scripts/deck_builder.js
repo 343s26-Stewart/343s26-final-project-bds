@@ -5,6 +5,7 @@ const deckNameInput = document.getElementById("name-input");
 const searchButton = document.getElementById("search-submit");
 const searchInput = document.getElementById("search-input");
 const deckList = document.getElementById("deck-list-items");
+const formatSelect = document.getElementById("format-select");
 
 
 /* Function Definitions */
@@ -125,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Load deck from localStorage, ONLY WORKS FOR ONE DECK
     // TODO: ADD SUPPORT FOR MORE DECKS
-    const deck = JSON.parse(localStorage.getItem("currentDeck")) || { name: "", cards: [] };
+    const deck = JSON.parse(localStorage.getItem("currentDeck")) || { name: "", cards: [], deckImage: "", format: "" };
     deckNameElem.textContent = deck.name;
 
     function getPrimaryType(typeLine) {
@@ -214,7 +215,7 @@ deckNameButton.addEventListener("click", () => {
     let nameText = deckNameInput.value;
     deckNameElem.textContent = nameText;
 
-    const existingDeck = JSON.parse(localStorage.getItem("currentDeck")) || { name: "", cards: [] };
+    const existingDeck = JSON.parse(localStorage.getItem("currentDeck")) || { name: "", cards: [], deckImage: "", format: "" };
     // shouldn't we get rid of the old cards in a new deck ?
     const currCards = existingDeck.cards;
 
@@ -226,13 +227,15 @@ deckNameButton.addEventListener("click", () => {
     // Maybe save this for a "Save" button?
     localStorage.setItem("currentDeck", JSON.stringify({
         name: nameText,
-        cards: currCards
+        cards: currCards,
+        deckImage: "",
+        format: ""
     }))
 
     //should make a different place for this
     //will update local storage
     const decks = JSON.parse(localStorage.getItem("decks"));
-    decks[nameText] = { name: nameText, cards: currCards };
+    decks[nameText] = { name: nameText, cards: currCards, deckImage: "", format: formatSelect.value };
     localStorage.setItem("decks", JSON.stringify(decks));
 
     deckNameInput.value = "";
