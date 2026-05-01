@@ -262,3 +262,32 @@ document.getElementById("favorite-button").addEventListener("click", () => {
     // update the favorites section
     displayFavorites();
 });
+
+// delete deck button
+document.getElementById("delete-button").addEventListener("click", () => {
+    const curdeck = JSON.parse(localStorage.getItem("currentDeck"));
+    const decks = JSON.parse(localStorage.getItem("decks"));
+    const favorites = JSON.parse(localStorage.getItem("favorites"));
+
+
+    // make sure we have a deck to delete
+    if (!curdeck.name) {
+        alert("No deck to delete!");
+        return;
+    }
+
+    if (decks[curdeck.name]) {
+        //set current deck to empty
+        localStorage.setItem("currentDeck", JSON.stringify({ name: "", cards: [], deckImage: "", format: "" }));
+
+        //delete from decks
+        delete decks[curdeck.name];
+        localStorage.setItem("decks", JSON.stringify(decks));
+
+        // if it's in favorites, delete it from there too
+        if (favorites[curdeck.name]) {
+            delete favorites[curdeck.name];
+            localStorage.setItem("favorites", JSON.stringify(favorites));
+        }
+    }
+});

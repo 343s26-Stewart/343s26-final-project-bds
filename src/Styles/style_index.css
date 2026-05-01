@@ -112,10 +112,23 @@ sidebar#decklist h2 {
 
 /* stats */
 
-#stats-content {
+#stats {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-content: center;
-    flex-wrap: wrap;
     padding: 10px;
+}
+
+
+
+/* style the canvas elements */
+#mana-curve-chart {
+    max-width: 80vw;
+    max-height: 80vh;
+}
+
+#land-ratio-chart {
+    max-width: 80vw;
+    max-height: 60vh;
 }

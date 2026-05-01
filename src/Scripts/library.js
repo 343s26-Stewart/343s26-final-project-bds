@@ -5,6 +5,41 @@ const template = document.getElementById("deck-template");
 
 
 
+function addDeleteButton(deckContainer, deck) {
+
+    deckContainer.querySelector("#delete-button").addEventListener("click", (event) => {
+        event.stopPropagation();
+
+        // get decks / favorites from local storage
+        const decks = JSON.parse(localStorage.getItem("decks"));
+        const favorites = JSON.parse(localStorage.getItem("favorites"));
+
+        // delete from decks
+        if (decks[deck]) {
+            delete decks[deck];
+            localStorage.setItem("decks", JSON.stringify(decks));
+
+            //see if it is in favorites, if so delete from there too
+            if (favorites !== null) {
+                if (favorites[deck]) {
+                    delete favorites[deck];
+                    localStorage.setItem("favorites", JSON.stringify(favorites));
+                }
+
+            }
+            // and from curdeck if it is the same one
+            const currentDeck = JSON.parse(localStorage.getItem("currentDeck"));
+            if (currentDeck.name === deck) {
+                localStorage.setItem("currentDeck", JSON.stringify({ name: "", cards: [], deckImage: "", format: "" }));
+            }
+        }
+        //reload the page
+        location.reload();
+
+    });
+
+}
+
 function addEditButton(deckContainer, deck) {
 
     deckContainer.querySelector("#edit-button").addEventListener("click", (event) => {
@@ -121,6 +156,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             //add event listener for edit button
             addEditButton(deckContainer, deck);
+
+            addDeleteButton(deckContainer, deck);
         });
     }
 });
@@ -168,6 +205,7 @@ document.addEventListener("DOMContentLoaded", () => {
             //add event listener for edit button
             addEditButton(deckContainer, deck);
 
+            addDeleteButton(deckContainer, deck);
         });
     }
 })

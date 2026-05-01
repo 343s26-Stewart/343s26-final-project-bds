@@ -74,6 +74,9 @@
                             <button type="submit" id="favorite-button">Click to Favorite</button>
                         </div>
                     </section>
+                    <section id="delete-area">
+                        <button type="submit" id="delete-button">Delete Deck</button>
+                    </section>
                 </section>
                 <h2 id="deck-name"></h2>
                 <div class="hidden" id="artifacts">
@@ -122,13 +125,19 @@
 
     <!-- stats; mana curve, land ratio -->
     <footer>
-        <div class="stats">
+        <div id="stats">
             <h2>Deck Stats</h2>
-            <h3 id="mana-curve">Mana Curve: </h3>
-            <h3 id="land-ratio">Land Ratio: </h3>
+            <div id="stats-content">
+                <h3>Mana Curve: </h3>
+                <canvas id="mana-curve-chart"></canvas>
+                <h3>Land Ratio: </h3>
+                <canvas id="land-ratio-chart"></canvas>
+            </div>
         </div>
     </footer>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="../Scripts/charting_function.js"></script>
 <script src="../Scripts/deck_builder.js"></script>
 
 </html>
