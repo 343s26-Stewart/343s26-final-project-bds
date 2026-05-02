@@ -75,6 +75,9 @@ main {
     min-height: 80vh;
 }
 
+.deck-builder {
+    width: 65%;
+}
 
 #deck-info {
     display: flex;
@@ -97,7 +100,6 @@ main {
 
 .card-preview {
     width: 20%;
-
 }
 
 
