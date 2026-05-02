@@ -6,6 +6,7 @@ const searchButton = document.getElementById("search-submit");
 const searchInput = document.getElementById("search-input");
 const deckList = document.getElementById("deck-list-items");
 const formatSelect = document.getElementById("format-select");
+const deleteCardButton = document.getElementById("delete-card-button");
 
 
 /* Function Definitions */
@@ -142,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const bucket = typeSections[typeKey];
         const isFirstInSection = bucket.list.children.length === 0;
-
+        
         const li = document.createElement("li");
         li.textContent = card.name;
 
@@ -158,6 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 img.classList.add("hidden");
                 cardNameElem.classList.add("hidden");
                 cardTextElem.classList.add("hidden");
+                deleteCardButton.classList.add("hidden");
                 selectedCardId = null;
                 return;
             }
@@ -169,6 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
             img.classList.remove("hidden");
             cardNameElem.classList.remove("hidden");
             cardTextElem.classList.remove("hidden");
+            deleteCardButton.classList.remove("hidden");
             selectedCardId = cardId;
         });
 
@@ -178,6 +181,34 @@ document.addEventListener("DOMContentLoaded", () => {
             bucket.section.classList.remove("hidden");
         }
     }
+
+    deleteCardButton.addEventListener("click", () => {
+        const index = deck.cards.findIndex(card => card.id === selectedCardId);
+        deck.cards.splice(index, 1);
+
+        localStorage.setItem("currentDeck", JSON.stringify(deck));
+
+        const decks = JSON.parse(localStorage.getItem("decks"));
+        if (decks && decks[deck.name]) {
+            decks[deck.name].cards = deck.cards;
+            localStorage.setItem("decks", JSON.stringify(decks));
+        }
+
+        selectedCardId = null;
+
+        // Re-render the card lists
+        Object.values(typeSections).forEach(({ section, list }) => {
+            list.replaceChildren();
+            section.classList.add("hidden");
+        });
+        displayDeckCards();
+
+        document.getElementById("card-image").classList.add("hidden");
+        document.getElementById("card-name").classList.add("hidden");
+        document.getElementById("card-text").classList.add("hidden");
+        deleteCardButton.classList.add("hidden");
+
+    });
 
     function displayDeckCards() {
         deck.cards.forEach(addCardToTypeSections);
