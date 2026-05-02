@@ -38,13 +38,32 @@ header ul li {
 
 #user-controls {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     display: flex;
-    margin: 0 10px;
+    margin: 10px 10px;
 }
 
 #user-controls section {
-    padding: 0 10px;
+    padding: 5px 10px;
+}
+
+#overarching-controls {
+    display: flex;
+    flex-direction: row;
+}
+
+#local-controls {
+    display: flex;
+    flex-direction: row;
+}
+
+#import-area {
+    display: flex;
+    flex-direction: column;
+}
+
+#import-button {
+    max-width: fit-content;
 }
 
 /*deck building area styling*/

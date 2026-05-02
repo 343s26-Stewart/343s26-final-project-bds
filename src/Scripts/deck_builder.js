@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const bucket = typeSections[typeKey];
         const isFirstInSection = bucket.list.children.length === 0;
-        
+
         const li = document.createElement("li");
         li.textContent = card.name;
 
@@ -201,6 +201,8 @@ document.addEventListener("DOMContentLoaded", () => {
             decks[deck.name].cards = deck.cards;
             localStorage.setItem("decks", JSON.stringify(decks));
         }
+
+        // do the same for favorites if deck.name exists in favorites
 
         selectedCardId = null;
 
@@ -266,14 +268,14 @@ importButton.addEventListener("click", () => {
 
         // 3) Refresh UI to show imported cards/sections
         window.location.reload();
-        
+
     };
     reader.readAsText(file);
 });
 
 exportButton.addEventListener("click", () => {
     const currentDeck = localStorage.getItem("currentDeck");
-    // Maybe a better way to get the deck name 
+    // Maybe a better way to get the deck name
     const fileName = deckNameElem.textContent + ".json"
     const blob = new Blob([currentDeck], { type: "application/json" });
 

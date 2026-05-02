@@ -47,42 +47,46 @@
             <!-- Deck builder content goes here -->
             <section id="Deck-Builder-Content">
                 <section id="user-controls">
-                    <section id="name-form-area">
-                        <form id="name-form">
-                            <input type="text" id="name-input" placeholder="Enter deck name...">
-                            <button type="submit" id="name-submit">Submit</button>
-                        </form>
+                    <section id="overarching-controls">
+                        <section id="name-form-area">
+                            <form id="name-form">
+                                <input type="text" id="name-input" placeholder="Enter deck name...">
+                                <button type="submit" id="name-submit">Submit</button>
+                            </form>
+                        </section>
+                        <section id="format">
+                            <label for="format-select">Format:</label>
+                            <select id="format-select">
+                                <option value="standard">Standard</option>
+                                <option value="modern">Modern</option>
+                                <option value="legacy">Legacy</option>
+                                <option value="commander">Commander</option>
+                                <option value="pauper">Pauper</option>
+                            </select>
+                        </section>
+                        <section id="favorite-area">
+                            <div id="favorite">
+                                <button type="submit" id="favorite-button">Click to Favorite</button>
+                            </div>
+                        </section>
+                        <section id="delete-area">
+                            <button type="submit" id="delete-button">Delete Deck</button>
+                        </section>
+                    </section>
+                    <section id="local-controls">
+                        <section id="export-area">
+                            <button type="button" id="export-button">Export Deck</button>
+                        </section>
+                        <section id="import-area">
+                            <input type="file" id="jsonFile" accept=".json">
+                            <button type="button" id="import-button">Import Deck</button>
+                        </section>
                     </section>
                     <section id="search-form-area">
                         <form id="search-form">
                             <input type="text" id="search-input" placeholder="Enter card name...">
                             <button type="submit" id="search-submit">Search</button>
                         </form>
-                    </section>
-                    <section id="format">
-                        <label for="format-select">Format:</label>
-                        <select id="format-select">
-                            <option value="standard">Standard</option>
-                            <option value="modern">Modern</option>
-                            <option value="legacy">Legacy</option>
-                            <option value="commander">Commander</option>
-                            <option value="pauper">Pauper</option>
-                        </select>
-                    </section>
-                    <section id="favorite-area">
-                        <div id="favorite">
-                            <button type="submit" id="favorite-button">Click to Favorite</button>
-                        </div>
-                    </section>
-                    <section id="delete-area">
-                        <button type="submit" id="delete-button">Delete Deck</button>
-                    </section>
-                    <section id="import-area">
-                        <input type="file" id="jsonFile" accept=".json">
-                        <button type="button" id="import-button">Import Deck</button>
-                    </section>
-                    <section id="export-area">
-                        <button type="button" id="export-button">Export Deck</button>
                     </section>
                 </section>
                 <h2 id="deck-name"></h2>
