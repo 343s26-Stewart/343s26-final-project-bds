@@ -7,6 +7,8 @@ const searchInput = document.getElementById("search-input");
 const deckList = document.getElementById("deck-list-items");
 const formatSelect = document.getElementById("format-select");
 const deleteCardButton = document.getElementById("delete-card-button");
+const importButton = document.getElementById("import-button");
+const exportButton = document.getElementById("export-button");
 
 
 /* Function Definitions */
@@ -16,13 +18,18 @@ function updateDeckList() {
     //remove previous entries
     deckList.replaceChildren();
 
-    const decks = JSON.parse(localStorage.getItem("decks"));
+    let decks = JSON.parse(localStorage.getItem("decks"));
 
-    Object.keys(decks).forEach(deck => {
-        const item = document.createElement("li");
-        item.textContent = deck;
-        deckList.appendChild(item);
-    });
+    if (decks) {
+        Object.keys(decks).forEach(deck => {
+            const item = document.createElement("li");
+            item.textContent = deck;
+            deckList.appendChild(item);
+        });
+    }
+    else {
+        decks = [];
+    }
 }
 
 function displayFavorites() {
@@ -183,7 +190,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     deleteCardButton.addEventListener("click", () => {
-        const index = deck.cards.findIndex(card => card.id === selectedCardId);
+        const index = deck.cards.findIndex(card => (card.id || card.name) === selectedCardId);
+        if (index === -1) return; // card not found, bail out
         deck.cards.splice(index, 1);
 
         localStorage.setItem("currentDeck", JSON.stringify(deck));
@@ -238,6 +246,45 @@ document.addEventListener("DOMContentLoaded", () => {
     displayFavorites();
 });
 
+importButton.addEventListener("click", () => {
+    const file = document.getElementById('jsonFile').files[0];
+    if (!file) return alert("Please select a file first!");
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        const imported = JSON.parse(e.target.result);
+
+        localStorage.setItem("currentDeck", JSON.stringify(imported));
+
+        // 2) Save in decks collection
+        const decks = JSON.parse(localStorage.getItem("decks")) || {};
+        decks[imported.name] = imported;
+        localStorage.setItem("decks", JSON.stringify(decks));
+
+        // Optional: if you want visible name before reload
+        //deckNameElem.textContent = deckToSave.name;
+
+        // 3) Refresh UI to show imported cards/sections
+        window.location.reload();
+        
+    };
+    reader.readAsText(file);
+});
+
+exportButton.addEventListener("click", () => {
+    const currentDeck = localStorage.getItem("currentDeck");
+    // Maybe a better way to get the deck name 
+    const fileName = deckNameElem.textContent + ".json"
+    const blob = new Blob([currentDeck], { type: "application/json" });
+
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = fileName;
+    link.click();
+
+    URL.revokeObjectURL(link.href);
+
+});
 
 
 // Set Deck name
