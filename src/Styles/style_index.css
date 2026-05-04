@@ -50,6 +50,15 @@ header ul li p {
     display: inline;
 }
 
+button {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+#name-form {
+    padding-right: 10px;
+}
+
 /* user control styling */
 
 #user-controls {
