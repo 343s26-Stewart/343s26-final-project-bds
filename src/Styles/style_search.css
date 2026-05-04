@@ -128,3 +128,22 @@ main {
     border: none;
     font-size: 1em;
 }
+
+@media (width >=320px) and (width <=700px) {
+    .decklist {
+        width: 30%;
+    }
+
+    .search-section {
+        width: 70%;
+    }
+
+    #operations {
+        flex-direction: column;
+    }
+
+    #shareable-url {
+        width: fit-content;
+    }
+
+}
