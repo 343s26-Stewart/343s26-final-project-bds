@@ -1,0 +1,147 @@
+/* Body styling */
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font);
+    margin: 0;
+    padding: 0;
+
+}
+
+/* Header styling */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px;
+
+}
+
+/* give every child a white underline */
+header>* {
+    border-bottom: 2px solid white;
+}
+
+/* list of navigation items */
+header ul {
+    padding: 5px;
+    margin: 0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+}
+
+/* list item spacing ... maybe just padding ? */
+header ul li {
+    margin: 0 20px;
+    font-size: 20px;
+}
+
+/* https://stackoverflow.com/questions/12285608/automatically-scale-an-image-to-match-text-height */
+header ul li img {
+    height: 1em;
+}
+
+header ul li a {
+    cursor: default;
+    color: white;
+    text-decoration: none;
+}
+
+header ul li p {
+    display: inline;
+}
+
+/* user control styling */
+
+#user-controls {
+    display: flex;
+    flex-direction: row;
+    display: flex;
+    margin: 0 10px;
+}
+
+#user-controls section {
+    padding: 0 10px;
+}
+
+/*deck building area styling*/
+main {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    min-height: 80vh;
+}
+
+
+#deck-info {
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    height: 100%;
+}
+
+.db-heading {
+    border-bottom: 2px solid black;
+    text-align: center;
+}
+
+#deck-name {
+    padding-left: 10px;
+}
+
+
+/*card preview styling*/
+
+.card-preview {
+    width: 20%;
+
+}
+
+
+.card-preview h2 {
+    border-bottom: 2px solid black;
+    text-align: center;
+}
+
+sidebar.card-preview aside {
+    /* border-left: 2px solid black; */
+
+}
+
+
+/*Sidebar decklist styling*/
+
+#decklist {
+    padding-left: 10px;
+    width: 15%;
+    background-color: var(--primary-color);
+    color: white;
+
+}
+
+
+/*give the header an underline*/
+
+sidebar#decklist h2 {
+    border-bottom: 2px solid white;
+}
+
+/* stats */
+
+#stats-content {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+#name-form {
+    padding-right: 10px;
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUDBuilder</title>
+    <link rel="icon" href="https://fav.mhciael.com/📦">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700&display=swap">
+    <link rel="stylesheet" href="../Styles/style.css">
+    <link rel="stylesheet" href="../Styles/style_index.css">
+</head>
+
+<body>
+    <header>
+        <!-- Title Bar -->
+        <h1 class="title">📦CRUDBuilder</h1>
+        <!-- nav section -->
+        <nav class="nav">
+            <ul class="nav-list">
+                <li>
+                    <img src="../Icons/home-svgrepo-com-white.svg" alt="Home">
+                    <p>Home</p>
+                </li>
+                <li>
+                    <img src="../Icons/library-svgrepo-com-white.svg" alt="Library">
+                    <a href="./library.html">Library</a>
+                </li>
+                <li>
+                    <img src="../Icons/search-left-1506-svgrepo-com-inverted.svg" alt="Search">
+                    <a href="./search.html">Search</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <main>
+        <!-- Deck list -->
+        <sidebar id="decklist">
+            <h2>Deck List</h2>
+            <h3 id="favorites">Favorites</h3>
+            <ul id="favorite-list">
+
+            </ul>
+            <h3 id="Your Decks">Your Decks</h3>
+            <ul id="deck-list-items">
+                <!-- Deck list items will be dynamically added here -->
+            </ul>
+        </sidebar>
+        <!-- main section deckbuilder -->
+
+        <section class="deck-builder">
+            <h2 class="db-heading">Deck Builder</h2>
+            <!-- Deck builder content goes here -->
+            <section id="Deck-Builder-Content">
+                <section id="user-controls">
+                    <section id="name-form-area">
+                        <form id="name-form">
+                            <input type="text" id="name-input" placeholder="Enter deck name...">
+                            <button type="submit" id="name-submit">Submit</button>
+                        </form>
+                    </section>
+                    <section id="search-form-area">
+                        <form id="search-form">
+                            <input type="text" id="search-input" placeholder="Enter card name...">
+                            <button type="submit" id="search-submit">Search</button>
+                        </form>
+                    </section>
+                    <section id="favorite-area">
+                        <div id="favorite">
+                            <button type="submit" id="favorite-button">Click to Favorite</button>
+                        </div>
+                    </section>
+                </section>
+                <h2 id="deck-name"></h2>
+                <div class="hidden" id="artifacts">
+                    <h3 id="artifacts-heading">Artifacts</h3>
+                    <ul id="artifacts-list"></ul>
+                </div>
+                <div class="hidden" id="creatures">
+                    <h3 id="creatures-heading">Creatures</h3>
+                    <ul id="creatures-list"></ul>
+                </div>
+                <div class="hidden" id="enchantments">
+                    <h3 id="enchantments-heading">Enchantments</h3>
+                    <ul id="enchantments-list"></ul>
+                </div>
+                <div class="hidden" id="instants">
+                    <h3 id="instants-heading">Instants</h3>
+                    <ul id="instants-list"></ul>
+                </div>
+                <div class="hidden" id="sorceries">
+                    <h3 id="sorceries-heading">Sorceries</h3>
+                    <ul id="sorceries-list"></ul>
+                </div>
+                <div class="hidden" id="planeswalkers">
+                    <h3 id="planeswalkers-heading">Planeswalkers</h3>
+                    <ul id="planeswalkers-list"></ul>
+                </div>
+                <div class="hidden" id="lands">
+                    <h3 id="lands-heading">Lands</h3>
+                    <ul id="lands-list"></ul>
+                </div>
+            </section>
+        </section>
+
+        <sidebar class="card-preview">
+            <h2 class="db-heading">Card Preview</h2>
+            <!-- Card preview content goes here -->
+            <aside class="card-preview-content">
+                <!-- Card details will be dynamically added here -->
+                <img id="card-image" src="" alt="Card Image" class="hidden">
+                <h3 id="card-name" class="hidden">Card Name</h3>
+                <p id="card-text" class="hidden">Card Text</p>
+            </aside>
+        </sidebar>
+
+    </main>
+
+    <!-- stats; mana curve, land ratio -->
+    <footer>
+        <div class="stats">
+            <h2>Deck Stats</h2>
+            <h3 id="mana-curve">Mana Curve: </h3>
+            <h3 id="land-ratio">Land Ratio: </h3>
+        </div>
+    </footer>
+</body>
+<script src="../Scripts/deck_builder.js"></script>
+
+</html>
