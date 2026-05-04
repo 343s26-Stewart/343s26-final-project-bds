@@ -35,6 +35,30 @@ header ul li {
 }
 
 
+/* https://stackoverflow.com/questions/12285608/automatically-scale-an-image-to-match-text-height */
+header ul li img {
+    height: 1em;
+}
+
+header ul li a {
+    cursor: default;
+    color: white;
+    text-decoration: none;
+}
+
+header ul li p {
+    display: inline;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+#name-form {
+    padding-right: 10px;
+}
+
 /* user control styling */
 
 #user-controls {
