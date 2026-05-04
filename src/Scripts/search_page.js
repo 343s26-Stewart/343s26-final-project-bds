@@ -12,8 +12,8 @@ const template = document.getElementById("card-template");
 const results = document.getElementById("search-results");
 
 // URL Params
-const params = new URLSearchParams(window.location.search);
-const deckName = params.get("deck");
+var params = new URLSearchParams(window.location.search);
+var deckName = params.get("deck");
 
 
 var card_data;
@@ -125,7 +125,15 @@ document.addEventListener("click", (event) => {
     deckObj[deck.name].cards.push(card);
     localStorage.setItem("decks", JSON.stringify(deckObj));
 
-    window.location.href = "./index.html";
+    //favorites
+    const favorites = JSON.parse(localStorage.getItem("favorites"));
+    if (favorites && favorites[deck.name]) {
+        favorites[deck.name].cards.push(card);
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+    }
+
+    //change this to allow multiple cards to be added
+    //window.location.href = "./index.html";
 });
 
 document.getElementById("search-form").addEventListener("submit", (event) => {
@@ -231,11 +239,48 @@ document.addEventListener("DOMContentLoaded", () => {
         const deckObject = JSON.parse(decks);
         Object.keys(deckObject).forEach((deck) => {
             const deckContainer = document.createElement("li");
+            const button = document.createElement("button");
+            button.textContent = deck;
+            button.className = "change-deck-button";
+            button.addEventListener("click", () => {
+                //set url param to deck
+                const url = new URL(window.location.href);
+                url.searchParams.set("deck", deck);
+                window.history.pushState(null, '', url.toString());
+
+                //make sure to reset deckname variable
+                params = new URLSearchParams(window.location.search);
+                deckName = params.get("deck");
+            })
             deckContainer.className = "deck-container";
-            deckContainer.textContent = deck;
+            deckContainer.appendChild(button);
             document.getElementById("deck-list-items").appendChild(deckContainer);
         });
     }
+    const favorites = localStorage.getItem("favorites");
+    if (favorites) {
+        const favoritesObject = JSON.parse(favorites);
+        Object.keys(favoritesObject).forEach((deck) => {
+            const deckContainer = document.createElement("li");
+            const button = document.createElement("button");
+            button.textContent = deck;
+            button.className = "change-deck-button";
+            button.addEventListener("click", () => {
+                //set url param to deck
+                const url = new URL(window.location.href);
+                url.searchParams.set("deck", deck);
+                window.history.pushState(null, '', url.toString());
+
+                //make sure to reset deckname variable
+                params = new URLSearchParams(window.location.search);
+                deckName = params.get("deck");
+            });
+            deckContainer.className = "deck-container";
+            deckContainer.appendChild(button);
+            document.getElementById("favorite-list").appendChild(deckContainer);
+        });
+    }
+
 });
 
 

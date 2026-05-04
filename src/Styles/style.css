@@ -14,6 +14,10 @@ a:visited {
     color: orangered;
 }
 
+ul {
+    list-style-type: none;
+}
+
 
 /*Hiding unused elements for now*/
 .hidden {

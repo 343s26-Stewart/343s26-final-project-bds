@@ -34,6 +34,7 @@ header ul li {
     margin: 0 20px;
 }
 
+
 /* user control styling */
 
 #user-controls {
@@ -152,4 +153,41 @@ sidebar#decklist h2 {
 #land-ratio-chart {
     max-width: 80vw;
     max-height: 60vh;
+}
+
+/* change deck styling */
+
+.change-deck-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    font-size: 1em;
+}
+
+
+@media (width >=320px) and (width <=700px) {
+
+    /* make the main element a column instead of a row */
+    .deck-builder {
+        width: 50%;
+    }
+
+    #user-controls {
+        flex-wrap: wrap;
+    }
+
+    #overarching-controls {
+        flex-wrap: wrap;
+    }
+
+    /* make the deck builder and card preview take up the full width */
+    .card-preview {
+        width: 100%;
+    }
+
+    /* make the deck info take up the full width */
+    #deck-info {
+        width: 100%;
+    }
+
 }

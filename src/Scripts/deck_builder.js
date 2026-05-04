@@ -18,12 +18,20 @@ function updateDeckList() {
     //remove previous entries
     deckList.replaceChildren();
 
-    let decks = JSON.parse(localStorage.getItem("decks"));
+    var decks = JSON.parse(localStorage.getItem("decks"));
 
     if (decks) {
         Object.keys(decks).forEach(deck => {
             const item = document.createElement("li");
-            item.textContent = deck;
+            const button = document.createElement("button");
+            button.textContent = deck;
+            button.classList.add("change-deck-button");
+            button.addEventListener("click", () => {
+                decks = JSON.parse(localStorage.getItem("decks"));
+                localStorage.setItem("currentDeck", JSON.stringify(decks[deck]));
+                window.location.reload();
+            });
+            item.appendChild(button);
             deckList.appendChild(item);
         });
     }
@@ -45,7 +53,15 @@ function displayFavorites() {
 
         Object.keys(decks).forEach(deck => {
             const item = document.createElement("li");
-            item.textContent = deck;
+            const button = document.createElement("button");
+            button.textContent = deck;
+            button.classList.add("change-deck-button");
+            button.addEventListener("click", () => {
+                const items = JSON.parse(localStorage.getItem("favorites"));
+                localStorage.setItem("currentDeck", JSON.stringify(items[deck]));
+                window.location.reload();
+            });
+            item.appendChild(button);
             favoritesList.appendChild(item);
         });
     }
@@ -203,6 +219,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // do the same for favorites if deck.name exists in favorites
+        const favorites = JSON.parse(localStorage.getItem("favorites"));
+        if (favorites && favorites[deck.name]) {
+            favorites[deck.name].cards = deck.cards;
+            localStorage.setItem("favorites", JSON.stringify(favorites));
+        }
 
         selectedCardId = null;
 

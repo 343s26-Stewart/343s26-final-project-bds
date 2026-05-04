@@ -48,11 +48,19 @@ main {
     width: 15%;
     background-color: var(--primary-color);
     color: white;
+    padding-left: 10px;
+
 }
 
 .decklist h2 {
     border-bottom: 2px solid white;
     padding-left: 10px;
+}
+
+.decklist ul {
+    padding: 0;
+    padding-left: 10px;
+    margin: 0;
 }
 
 /* operations */
@@ -111,4 +119,12 @@ main {
     flex-direction: row;
     justify-content: space-evenly;
     padding: 20px;
+}
+
+/* Change deck buttons */
+.change-deck-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    font-size: 1em;
 }
