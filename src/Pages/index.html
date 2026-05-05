@@ -142,7 +142,7 @@
                 <aside class="card-preview-content">
                     <!-- Card details will be dynamically added here -->
                     <img id="card-image" src="../Images/Default_Deck_Image.png" alt="Card Image" class="hidden"
-                        aria-label="Card Image">
+                        aria-label="Card Image for selected card">
                     <h3 id="card-name" class="hidden">Card Name</h3>
                     <p id="card-text" class="hidden">Card Text</p>
                     <button id="delete-card-button" type="button" class="hidden">Delete</button>
@@ -158,11 +158,12 @@
             <ul id="stats-content">
                 <li>
                     <h3>Mana Curve: </h3>
-                    <canvas id="mana-curve-chart" aria-label="Mana Curve"></canvas>
+                    <canvas id="mana-curve-chart"
+                        aria-label="A chart that will automatically adjust to the mana values of the cards added to the deck"></canvas>
                 </li>
                 <li>
                     <h3>Land Ratio: </h3>
-                    <canvas id="land-ratio-chart" aria-label="Land Ratio"></canvas>
+                    <canvas id="land-ratio-chart" aria-label="Land Ratio of the cards added to the deck"></canvas>
                 </li>
             </ul>
         </section>
