@@ -168,7 +168,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const isFirstInSection = bucket.list.children.length === 0;
 
         const li = document.createElement("li");
-        li.textContent = card.name;
+        const button = document.createElement("button");
+        button.textContent = card.name;
+        button.classList.add("card-button");
+        li.appendChild(button);
 
         li.addEventListener("click", () => {
             const img = document.getElementById("card-image");

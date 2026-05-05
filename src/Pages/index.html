@@ -131,31 +131,35 @@
                 </section>
             </section>
 
-            <sidebar class="card-preview">
+            <section class="card-preview">
                 <h2 class="db-heading">Card Preview</h2>
                 <!-- Card preview content goes here -->
                 <aside class="card-preview-content">
                     <!-- Card details will be dynamically added here -->
-                    <img id="card-image" src="" alt="Card Image" class="hidden">
+                    <img id="card-image" src="" alt="Card Image" class="hidden" aria-label="Card Image">
                     <h3 id="card-name" class="hidden">Card Name</h3>
                     <p id="card-text" class="hidden">Card Text</p>
                     <button id="delete-card-button" type="button" class="hidden">Delete</button>
                 </aside>
-            </sidebar>
+            </section>
         </section>
     </main>
 
     <!-- stats; mana curve, land ratio -->
     <footer>
-        <div id="stats">
+        <section id="stats">
             <h2>Deck Stats</h2>
-            <div id="stats-content">
-                <h3>Mana Curve: </h3>
-                <canvas id="mana-curve-chart"></canvas>
-                <h3>Land Ratio: </h3>
-                <canvas id="land-ratio-chart"></canvas>
-            </div>
-        </div>
+            <ul id="stats-content">
+                <li>
+                    <h3>Mana Curve: </h3>
+                    <canvas id="mana-curve-chart" aria-label="Mana Curve"></canvas>
+                </li>
+                <li>
+                    <h3>Land Ratio: </h3>
+                    <canvas id="land-ratio-chart" aria-label="Land Ratio"></canvas>
+                </li>
+            </ul>
+        </section>
     </footer>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

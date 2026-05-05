@@ -123,6 +123,8 @@ document.addEventListener("DOMContentLoaded", function () {
             const deckElement = template.content.cloneNode(true);
             const deckContainer = deckElement.querySelector(".deck-item");
             const deckName = deckElement.querySelector(".deck-name");
+            const anchor = deckElement.querySelector(".deck-item");
+            anchor.href = "index.html";
             //add deck to proper format section
             const format = document.querySelector(`#${deckObject[deck].format}`);
             format.classList.remove("hidden");
@@ -151,7 +153,6 @@ document.addEventListener("DOMContentLoaded", function () {
             deckContainer.addEventListener("click", () => {
                 //save the current deck to local storage so that it can be accessed in the deck builder page
                 localStorage.setItem("currentDeck", JSON.stringify(deckObject[deck]));
-                window.location.href = "index.html";
             });
 
             //add event listener for edit button

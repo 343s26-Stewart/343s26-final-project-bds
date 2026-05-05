@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library</title>
+    <title>📦CRUDBuilder</title>
     <link rel="icon" href="https://fav.mhciael.com/📦">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -72,13 +72,15 @@
             </div>
         </section>
         <template id="deck-template">
-            <div class="deck-item">
-                <img src="../Images/Default_Deck_Image.png" alt="Deck Image" class="deck-image">
-                <h4 class="deck-name"></h4>
-                <div class="deck-controls">
-                    <button id="edit-button" type="submit">Add Deck Image</button>
-                    <button id="delete-button" type="submit">Delete Deck</button>
-                </div>
+            <div class="item">
+                <a href="#" class="deck-item">
+                    <img src="../Images/Default_Deck_Image.png" alt="Deck Image" class="deck-image">
+                    <h4 class="deck-name"></h4>
+                    <div class="deck-controls">
+                        <button id="edit-button" type="submit">Add Deck Image</button>
+                        <button id="delete-button" type="submit">Delete Deck</button>
+                    </div>
+                </a>
             </div>
         </template>
         <dialog id="image-upload-dialog">
