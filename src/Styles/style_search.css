@@ -149,6 +149,11 @@ main {
     font-size: 1em;
 }
 
+#filter-form {
+    display: flex;
+
+}
+
 @media (width >=320px) and (width <=700px) {
     .decklist {
         width: 30%;

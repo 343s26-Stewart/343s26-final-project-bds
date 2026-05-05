@@ -23,30 +23,16 @@ setCallBackFunction(displayResults);
 
 async function displayResults(data) {
 
-    card_data = data;
-
     //clear out old cards
     deletePrevious()
 
-
-    while (curitem + pageSize >= card_data.data.length && card_data.has_more === true) {
-
-        const cards = card_data.data;
-
-        //make fetch call ?
-        const nextData = await fetch(card_data.next_page);
-        card_data = await nextData.json();
-
-        card_data.data = cards.concat(card_data.data); // combine data pieces to display
-    }
-
-    // check to see if curitem is still bigger and card_data has no more pages
-    // if (curitem  + pagsize >= card_data.data.length)
-    //  display error ("Improper request: The query does not have enough data to display");
-    //  return ?; we have to exit here
-
     // display card image and name
-    const dataPiece = card_data.data.slice(curitem, curitem + pageSize);
+    console.log(data);
+    //filter data here based on url Params
+    data.data = filterData(data.data);
+    console.log(data);
+    const dataPiece = data.data.slice(curitem, curitem + pageSize);
+
 
 
     dataPiece.forEach((card) => {
@@ -78,7 +64,7 @@ async function displayResults(data) {
     });
 
 
-    if (curitem + pageSize >= card_data.data.length) {
+    if (curitem + pageSize >= data.data.length) {
         document.getElementById("scroll-right").classList.add("hidden");
     } else {
         document.getElementById("scroll-right").classList.remove("hidden");
@@ -89,6 +75,108 @@ async function displayResults(data) {
     } else {
         document.getElementById("scroll-left").classList.remove("hidden");
     }
+}
+
+function getFilterParams() {
+    const filterForm = document.getElementById("filter-form");
+
+    //get all of the inputs by id
+    const inputs = filterForm.querySelectorAll("input");
+
+    //construct FormData object
+    const data = new FormData(filterForm);
+
+    // load relevant items into url params, ex) if color checkbox is checked, add color=red to url params
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const newUrlParams = new URLSearchParams();
+
+    if (urlParams.has("query")) {
+        newUrlParams.set("query", urlParams.get("query"));
+    } else if (urlParams.has("deck")) {
+        newUrlParams.set("deck", urlParams.get("deck"));
+    }
+
+
+    newUrlParams.set("filter", "true");
+
+    // parse each of the forms inputs
+    // make sure each of the checkboxes are checked
+    inputs.forEach((input) => {
+        if (input.type === "checkbox" && input.checked) {
+            newUrlParams.set(input.name, input.value);
+        } else if (input.type === "text" && input.value) {
+            newUrlParams.set(input.name, input.value);
+        } else if (input.type === "number" && input.value) {
+            newUrlParams.set(input.name, input.value);
+        }
+    });
+
+    // update url to include the new params
+    const url = new URL(window.location.href);
+    url.search = newUrlParams.toString();
+    window.history.pushState(null, '', url.toString());
+}
+
+function filterData(data) {
+    const urlParams = new URLSearchParams(window.location.search);
+
+    //filter out unneeded params
+    //const params = urlParams.keys().filter(param => { param !== "filter" && param !== "deck" && param !== "page" });
+
+    var newData = data;
+    if (urlParams.has("filter")) {
+        //console.log(params);
+        urlParams.keys().forEach((item) => {
+            switch (item) {
+                //need a case for each filter
+                case "red-identity": //red
+                    newData = newData.filter(card => card.color_identity.includes("R"));
+                    break;
+                case "blue-identity": //blue
+                    newData = newData.filter(card => card.color_identity.includes("U"));
+                    break;
+                case "black-identity": //black
+                    newData = newData.filter(card => card.color_identity.includes("B"));
+                    break;
+                case "white-identity": //white
+                    newData = newData.filter(card => card.color_identity.includes("W"));
+                    break;
+                case "green-identity": //green
+                    newData = newData.filter(card => card.color_identity.includes("G"));
+                    break;
+                case "CMC": //CMC
+                    newData = newData.filter(card => card.cmc === parseInt(urlParams.get("CMC")));
+                    break;
+                case "card-name": //name
+                    newData = newData.filter(card => card.name.includes(urlParams.get("card-name")));
+                    break;
+                case "creature-type": //creature
+                    newData = newData.filter(card => card.type_line.includes("Creature"));
+                    break;
+                case "specific-creature-type": //creature type
+                    newData = newData.filter(card => card.type_line.includes(urlParams.get("specific-creature-type")));
+                    break;
+                case "artifact-type": //artifact
+                    newData = newData.filter(card => card.type_line.includes("Artifact"));
+                    break;
+                case "enchantment-type": //enchantment
+                    newData = newData.filter(card => card.type_line.includes("Enchantment"));
+                    break;
+                case "instant-type": //instant
+                    newData = newData.filter(card => card.type_line.includes("Instant"));
+                    break;
+                case "sorcery-type": //sorcery
+                    newData = newData.filter(card => card.type_line.includes("Sorcery"));
+                    break;
+                case "planeswalker-type": //planeswalker
+                    newData = newData.filter(card => card.type_line.includes("Planeswalker"));
+                    break;
+                default:
+            }
+        });
+    }
+    return newData;
 }
 
 function routeToPage(pageNum) {
@@ -107,6 +195,24 @@ function deletePrevious() {
         });
     }
 }
+
+//url filter params
+document.getElementById("filter-form").addEventListener("submit", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    getFilterParams();
+
+    displayLoading();
+
+    curitem = 0;
+
+    window.setTimeout(async () => {
+        card_data = await queryAPI();
+    }, 1000);
+
+});
+
 
 //Event listener for the add buttons
 document.addEventListener("click", (event) => {
@@ -158,8 +264,8 @@ document.getElementById("search-form").addEventListener("submit", (event) => {
 
     // query api with search term after 4.5 seconds
     window.setTimeout(async () => {
-        await queryAPI();
-    }, 4500);
+        card_data = await queryAPI();
+    }, 1000);
 
 });
 
@@ -227,8 +333,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // query api with search term after 4.5 seconds
         window.setTimeout(async () => {
-            await queryAPI();
-        }, 4500);
+            card_data = await queryAPI();
+        }, 1000);
     }
 });
 
@@ -251,6 +357,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 //make sure to reset deckname variable
                 params = new URLSearchParams(window.location.search);
                 deckName = params.get("deck");
+                window.location.reload();
             })
             deckContainer.className = "deck-container";
             deckContainer.appendChild(button);
@@ -274,6 +381,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 //make sure to reset deckname variable
                 params = new URLSearchParams(window.location.search);
                 deckName = params.get("deck");
+                window.location.reload();
             });
             deckContainer.className = "deck-container";
             deckContainer.appendChild(button);
@@ -301,7 +409,7 @@ window.addEventListener("popstate", () => {
 
         // now query.
         window.setTimeout(async () => {
-            await queryAPI();
+            card_data = await queryAPI();
         }, 1000);
     }
 

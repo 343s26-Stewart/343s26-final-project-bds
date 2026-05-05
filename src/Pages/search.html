@@ -58,6 +58,52 @@
                     <button type="submit" id="search-submit">Search</button>
                 </form>
                 <button type="submit" id="shareable-url">Get Shareable URL</button>
+                <form id="filter-form">
+                    <section id="generals">
+                        <label for="card-name">Card Name: </label>
+                        <input type="text" id="card-name" name="card-name" value=""> <!-- name -->
+                        <label for="CMC">CMC:</label>
+                        <input type="number" id="CMC" name="CMC" value=""> <!-- CMC -->
+
+                    </section>
+                    <section id="color-identity">
+                        <label for="red-identity">Red: </label>
+                        <input type="checkbox" id="red-identity" name="red-identity" value="true"> <!-- Colors -->
+                        <label for="blue-identity">Blue: </label>
+                        <input type="checkbox" id="blue-identity" name="blue-identity" value="true">
+                        <label for="black-identity">Black: </label>
+                        <input type="checkbox" id="black-identity" name="black-identity" value="true">
+                        <label for="white-identity"> White:</label>
+                        <input type="checkbox" id="white-identity" name="white-identity" value="true">
+                        <label for="green-identity">Green: </label>
+                        <input type="checkbox" id="green-identity" name="green-identity" value="true">
+
+                    </section>
+                    <section id="type-selection">
+                        <section id="creature specifics">
+                            <label for="creature-type">Creature: </label>
+                            <input type="checkbox" id="creature-type" name="creature-type" value="creature">
+                            <!-- Type -->
+
+                            <label for="specific-creature-type">Creature Type: </label>
+                            <input type="text" id="specific-creature-type" name="specific-creature-type" value="">
+                            <!-- Creature Type -->
+
+                        </section>
+                        <label for="instant-type">Instant: </label>
+                        <input type="checkbox" id="instant-type" name="instant-type" value="instant">
+                        <label for="sorcery-type">Sorcery: </label>
+                        <input type="checkbox" id="sorcery-type" name="sorcery-type" value="sorcery">
+                        <label for="artifact-type">Artifact: </label>
+                        <input type="checkbox" id="artifact-type" name="artifact-type" value="artifact">
+                        <label for="enchantment-type">Enchantment: </label>
+                        <input type="checkbox" id="enchantment-type" name="enchantment-type" value="enchantment">
+                        <label for="planeswalker-type">Planeswalker: </label>
+                        <input type="checkbox" id="planeswalker-type" name="planeswalker-type" value="planeswalker">
+
+                    </section>
+                    <button type="submit" id="submit-filter">Filter Results</button>
+                </form>
             </section>
             <section id="loading-indicator" class="hidden">
             </section>

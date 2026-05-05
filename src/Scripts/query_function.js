@@ -71,9 +71,21 @@ async function queryAPI() {
 
     try { // see if server responds
         const response = await fetch(`${api}${searchTerm}`);
-        const data = await response.json();
+        var data = await response.json();
+        const getAll = setInterval(async () => {
+            if (data.has_more) {
+                const oldCards = data.data;
+                const moreData = await fetch(data.next_page);
+                data = await moreData.json();
+                data.data = oldCards.concat(data.data);
+            } else {
+                clearInterval(getAll);
+            }
+        }, 1000);
+
         if (callBackFunction) { // make sure call back is set
-            callBackFunction(data); // transform data
+            setTimeout(() => { callBackFunction(data) }, 2000);// transform data
+            return data;
         }
 
     } catch (error) { // error message if server isn't responding
