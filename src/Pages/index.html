@@ -45,7 +45,7 @@
             <ul id="favorite-list">
 
             </ul>
-            <h3 id="Your Decks">Your Decks</h3>
+            <h3 id="your-decks">Your Decks</h3>
             <ul id="deck-list-items">
                 <!-- Deck list items will be dynamically added here -->
             </ul>
@@ -60,7 +60,9 @@
                         <section id="overarching-controls">
                             <section id="name-form-area">
                                 <form id="name-form">
-                                    <input type="text" id="name-input" placeholder="Enter deck name...">
+                                    <label for="name-input">Enter A Deck Name: </label>
+                                    <input type="text" id="name-input" name="name-input"
+                                        placeholder="Enter deck name...">
                                     <button type="submit" id="name-submit">Submit</button>
                                 </form>
                             </section>
@@ -88,13 +90,16 @@
                                 <button type="button" id="export-button">Export Deck</button>
                             </section>
                             <section id="import-area">
-                                <input type="file" id="jsonFile" accept=".json">
+                                <label for="jsonFile">Input a File: </label>
+                                <input type="file" id="jsonFile" name="jsonFile" accept=".json">
                                 <button type="button" id="import-button">Import Deck</button>
                             </section>
                         </section>
                         <section id="search-form-area">
                             <form id="search-form">
-                                <input type="text" id="search-input" placeholder="Enter card name...">
+                                <label for="search-input">Enter Search Term:</label>
+                                <input type="text" id="search-input" name="search-input"
+                                    placeholder="Enter card name...">
                                 <button type="submit" id="search-submit">Search</button>
                             </form>
                         </section>
@@ -136,7 +141,8 @@
                 <!-- Card preview content goes here -->
                 <aside class="card-preview-content">
                     <!-- Card details will be dynamically added here -->
-                    <img id="card-image" src="" alt="Card Image" class="hidden" aria-label="Card Image">
+                    <img id="card-image" src="../Images/Default_Deck_Image.png" alt="Card Image" class="hidden"
+                        aria-label="Card Image">
                     <h3 id="card-name" class="hidden">Card Name</h3>
                     <p id="card-text" class="hidden">Card Text</p>
                     <button id="delete-card-button" type="button" class="hidden">Delete</button>
@@ -162,6 +168,7 @@
         </section>
     </footer>
 </body>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="../Scripts/charting_function.js"></script>
 <script src="../Scripts/deck_builder.js"></script>

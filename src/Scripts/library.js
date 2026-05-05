@@ -7,7 +7,7 @@ const template = document.getElementById("deck-template");
 
 function addDeleteButton(deckContainer, deck) {
 
-    deckContainer.querySelector("#delete-button").addEventListener("click", (event) => {
+    deckContainer.querySelector(".delete-button").addEventListener("click", (event) => {
         event.stopPropagation();
 
         // get decks / favorites from local storage
@@ -42,7 +42,7 @@ function addDeleteButton(deckContainer, deck) {
 
 function addEditButton(deckContainer, deck) {
 
-    deckContainer.querySelector("#edit-button").addEventListener("click", (event) => {
+    deckContainer.querySelector(".edit-button").addEventListener("click", (event) => {
         event.stopPropagation(); // Prevent the click event from bubbling up to the deckContainer
         event.preventDefault(); // Prevent the default button behavior (if any)
 
@@ -124,7 +124,8 @@ document.addEventListener("DOMContentLoaded", function () {
             const deckContainer = deckElement.querySelector(".deck-item");
             const deckName = deckElement.querySelector(".deck-name");
             const anchor = deckElement.querySelector(".deck-item");
-            anchor.href = "index.html";
+
+            deckContainer.href = "index.html";
             //add deck to proper format section
             const format = document.querySelector(`#${deckObject[deck].format}`);
             format.classList.remove("hidden");

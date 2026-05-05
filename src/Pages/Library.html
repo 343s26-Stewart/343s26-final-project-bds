@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>📦CRUDBuilder</title>
+    <title>Library</title>
     <link rel="icon" href="https://fav.mhciael.com/📦">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,7 @@
 <body>
     <header>
         <!-- Title Bar -->
-        <h1 class="title">📦Library</h1>
+        <h1 class="title">📦CRUDBuilder</h1>
         <!-- nav section -->
         <nav class="nav">
             <ul class="nav-list">
@@ -77,8 +77,8 @@
                     <img src="../Images/Default_Deck_Image.png" alt="Deck Image" class="deck-image">
                     <h4 class="deck-name"></h4>
                     <div class="deck-controls">
-                        <button id="edit-button" type="submit">Add Deck Image</button>
-                        <button id="delete-button" type="submit">Delete Deck</button>
+                        <button class="edit-button" type="submit">Add Deck Image</button>
+                        <button class="delete-button" type="submit">Delete Deck</button>
                     </div>
                 </a>
             </div>
@@ -92,8 +92,8 @@
                 <button type="button" id="cancel-button">Cancel</button>
             </form>
             <div id="image-preview-area">
-                <label for="image-preview">Image Preview:</label>
-                <img id="image-preview" src="" alt="Image Preview" class="hidden">
+                <p>Image Preview:</p>
+                <img id="image-preview" src="../Images/Default_Deck_Image.png" alt="Image Preview" class="hidden">
             </div>
         </dialog>
     </main>

@@ -73,7 +73,7 @@ async function queryAPI() {
         const response = await fetch(`${api}${searchTerm}`);
         var data = await response.json();
         const getAll = setInterval(async () => {
-            if (data.has_more) {
+            if (data.has_more === true) {
                 const oldCards = data.data;
                 const moreData = await fetch(data.next_page);
                 data = await moreData.json();

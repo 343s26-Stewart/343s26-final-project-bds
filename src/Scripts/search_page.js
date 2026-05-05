@@ -27,13 +27,12 @@ async function displayResults(data) {
     deletePrevious()
 
     // display card image and name
-    console.log(data);
     //filter data here based on url Params
-    data.data = filterData(data.data);
     console.log(data);
+    data.data = filterData(data.data);
     const dataPiece = data.data.slice(curitem, curitem + pageSize);
 
-
+    console.log(data);
 
     dataPiece.forEach((card) => {
         const cardElement = template.content.cloneNode(true);
@@ -75,6 +74,7 @@ async function displayResults(data) {
     } else {
         document.getElementById("scroll-left").classList.remove("hidden");
     }
+    card_data = data;
 }
 
 function getFilterParams() {
