@@ -393,5 +393,6 @@ document.getElementById("delete-button").addEventListener("click", () => {
             delete favorites[curdeck.name];
             localStorage.setItem("favorites", JSON.stringify(favorites));
         }
+        location.reload();
     }
 });

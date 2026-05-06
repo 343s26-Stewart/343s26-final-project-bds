@@ -114,6 +114,15 @@ function mouseHover(element) {
     });
 }
 
+function focusElement(element) {
+    element.addEventListener("focus", () => {
+        element.classList.add("hovered");
+    });
+    element.addEventListener("blur", () => {
+        element.classList.remove("hovered");
+    });
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     const decks = localStorage.getItem("decks");
 
@@ -150,6 +159,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             //add event listener for hover capabilities
             mouseHover(deckContainer);
+            focusElement(deckContainer);
 
             //add event listener for clicking on deck to go to deck builder page
             deckContainer.addEventListener("click", () => {
@@ -198,6 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             //add event listener for hover capabilities
             mouseHover(deckContainer);
+            focusElement(deckContainer);
 
             //add event listener for clicking on deck to go to deck builder page
             deckContainer.addEventListener("click", () => {
