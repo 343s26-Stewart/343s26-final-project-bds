@@ -259,7 +259,7 @@ searchButton.addEventListener("click", (event) => {
     const searchTerm = searchInput.value;
     const deckName = deckNameElem.textContent;
 
-    window.location.href = `./search.html?deck=${encodeURIComponent(deckName)}&query=${encodeURIComponent(searchTerm)}`;
+    window.location.href = `./Pages/search.html?deck=${encodeURIComponent(deckName)}&query=${encodeURIComponent(searchTerm)}`;
 })
 
 /*
