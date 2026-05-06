@@ -252,7 +252,9 @@ document.getElementById("search-form").addEventListener("submit", (event) => {
     curitem = 0;
     // window.location.href = new URL(`http://127.0.0.1:3000/343s26-final-project-bds/src/Pages/search.html?query=${encodeURIComponent(document.getElementById("search-input").value)}`);
     // display loading indicator
+
     const url = new URL(window.location.href);
+
     url.searchParams.set('query', (document.getElementById("search-input").value));
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.has("page")) {
@@ -423,38 +425,81 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //get query and update search input
     if (url.searchParams.has("query")) {
-        document.querySelector().value = url.searchParams.get("query");
+        document.querySelector("#search-input").value = url.searchParams.get("query");
+    } else {
+        document.querySelector("#search-input").value = "";
     }
 
     // do the same for the filters
-    if (url.searchParams.has()) { //black
-        document.querySelector().value = url.searchParams.get("query");
-    } else if (url.searchParams.has()) { //blue
-        document.querySelector().value = url.searchParams.get("query");
-    } else if (url.searchParams.has()) { //red
-        document.querySelector().value = url.searchParams.get("query");
-    } else if (url.searchParams.has()) { //white
-        document.querySelector().value = url.searchParams.get("query");
-    } else if (url.searchParams.has()) { //green
-        document.querySelector().value = url.searchParams.get("query");
-    } else if (url.searchParams.has()) { // creature
-        document.querySelector().value = url.searchParams.get("query");
-    } else if (url.searchParams.has()) { // creature-type
-        document.querySelector().value = url.searchParams.get("query");
-    } else if (url.searchParams.has()) { //instant
-        document.querySelector().value = url.searchParams.get("query");
-    } else if (url.searchParams.has()) { //sorcery
-        document.querySelector().value = url.searchParams.get("query");
-    } else if (url.searchParams.has()) { //artifact
-        document.querySelector().value = url.searchParams.get("query");
-    } else if (url.searchParams.has()) { //planeswalker
-        document.querySelector().value = url.searchParams.get("query");
-    } else if (url.searchParams.has()) { // enchantment
-        document.querySelector().value = url.searchParams.get("query");
-    } else if (url.searchParams.has()) { // CMC
-        document.querySelector().value = url.searchParams.get("query");
-    } else if (url.searchParams.has()) { // cardname
-        document.querySelector().value = url.searchParams.get("query");
+    if (url.searchParams.has("black-identity")) { //black
+        document.querySelector("#black-identity").checked = true;
+    } else {
+        document.querySelector("#black-identity").checked = false;
+    }
+    if (url.searchParams.has("blue-identity")) { //blue
+        document.querySelector("#blue-identity").checked = true;
+    } else {
+        document.querySelector("#blue-identity").checked = false;
+    }
+    if (url.searchParams.has("red-identity")) { //red
+        document.querySelector("#red-identity").checked = true;
+    } else {
+        document.querySelector("#red-identity").checked = false;
+    }
+    if (url.searchParams.has("white-identity")) { //white
+        document.querySelector("#white-identity").checked = true;
+    } else {
+        document.querySelector("#white-identity").checked = false;
+    }
+    if (url.searchParams.has("green-identity")) { //green
+        document.querySelector("#green-identity").checked = true;
+    } else {
+        document.querySelector("#green-identity").checked = false;
+    }
+    if (url.searchParams.has("creature-type")) { // creature
+        document.querySelector("#creature-type").checked = true;
+    } else {
+        document.querySelector("#creature-type").checked = false;
+    }
+    if (url.searchParams.has("specific-creature-type")) { // creature-type
+        document.querySelector("#specific-creature-type").value = url.searchParams.get("specific-creature-type");
+    } else {
+        document.querySelector("#specific-creature-type").value = "";
+    }
+    if (url.searchParams.has("instant-type")) { //instant
+        document.querySelector("#instant-type").checked = true;
+    } else {
+        document.querySelector("#instant-type").checked = false;
+    }
+    if (url.searchParams.has("sorcery-type")) { //sorcery
+        document.querySelector("#sorcery-type").checked = true;
+    } else {
+        document.querySelector("#sorcery-type").checked = false;
+    }
+    if (url.searchParams.has("artifact-type")) { //artifact
+        document.querySelector("#artifact-type").checked = true;
+    } else {
+        document.querySelector("#artifact-type").checked = false;
+    }
+    if (url.searchParams.has("planeswalker-type")) { //planeswalker
+        document.querySelector("#planeswalker-type").checked = true;
+    } else {
+        document.querySelector("#planeswalker-type").checked = false;
+    }
+    if (url.searchParams.has("enchantment-type")) { // enchantment
+        document.querySelector("#enchantment-type").checked = true;
+    } else {
+        document.querySelector("#enchantment-type").checked = false;
+    }
+    if (url.searchParams.has("CMC")) { // CMC
+        document.querySelector("#CMC").value = url.searchParams.get("CMC");
+    } else {
+        document.querySelector("#CMC").value = ""
+    }
+    if (url.searchParams.has("card-name")) { // cardname
+        document.querySelector("#card-name").value = url.searchParams.get("card-name");
+    } else {
+        document.querySelector("#card-name").value = ""
     }
 
 });

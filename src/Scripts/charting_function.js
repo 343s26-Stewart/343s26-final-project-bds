@@ -14,6 +14,8 @@ function createManaCurveChart() {
 
     const curDeck = JSON.parse(localStorage.getItem("currentDeck")) || { name: "", cards: [], deckImage: "", format: "" };
 
+
+
     const manaCount = {};
 
     curDeck.cards.forEach(card => {
