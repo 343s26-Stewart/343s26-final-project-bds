@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const deckName = deckElement.querySelector(".deck-name");
             const anchor = deckElement.querySelector(".deck-item");
 
-            deckContainer.href = "index.html";
+            deckContainer.href = "../index.html";
             //add deck to proper format section
             const format = document.querySelector(`#${deckObject[deck].format}`);
             format.classList.remove("hidden");
@@ -134,8 +134,9 @@ document.addEventListener("DOMContentLoaded", function () {
             deckName.textContent = deck;
 
             //set the deck image if it exists
-            if (deckObject[deck].deckImage !== "") {
+            if (deckObject[deck].deckImage !== "../ Images / Default_Deck_Image.png") {
                 deckContainer.querySelector(".deck-image").src = deckObject[deck].deckImage;
+                deckContainer.querySelector(".deck-image").alt = `Standard ${deck} Deck Image`;
             } else {
 
             }
@@ -183,8 +184,9 @@ document.addEventListener("DOMContentLoaded", () => {
             deckName.textContent = deck;
 
             //set the deck image if it exists
-            if (favorites[deck].deckImage !== "") {
+            if (favorites[deck].deckImage !== "../Images/Default_Deck_Image.png") {
                 deckContainer.querySelector(".deck-image").src = favorites[deck].deckImage;
+                deckContainer.querySelector(".deck-image").alt = `Favorite ${deck} Deck Image`;
             }
 
             //append to the format section as a list item
@@ -201,7 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
             deckContainer.addEventListener("click", () => {
                 //save the current deck to local storage so that it can be accessed in the deck builder page
                 localStorage.setItem("currentDeck", JSON.stringify(favorites[deck]));
-                window.location.href = "index.html";
+                window.location.href = "../index.html";
             });
 
             //add event listener for edit button

@@ -415,3 +415,45 @@ window.addEventListener("popstate", () => {
 
 
 });
+
+// on DOMContent Load populate filters/search with information provided by url
+document.addEventListener("DOMContentLoaded", () => {
+    const url = new URL(window.location);
+
+    //get query and update search input
+    if (url.searchParams.has("query")) {
+        document.querySelector().value = url.searchParams.get("query");
+    }
+
+    // do the same for the filters
+    if (url.searchParams.has()) { //black
+        document.querySelector().value = url.searchParams.get("query");
+    } else if (url.searchParams.has()) { //blue
+        document.querySelector().value = url.searchParams.get("query");
+    } else if (url.searchParams.has()) { //red
+        document.querySelector().value = url.searchParams.get("query");
+    } else if (url.searchParams.has()) { //white
+        document.querySelector().value = url.searchParams.get("query");
+    } else if (url.searchParams.has()) { //green
+        document.querySelector().value = url.searchParams.get("query");
+    } else if (url.searchParams.has()) { // creature
+        document.querySelector().value = url.searchParams.get("query");
+    } else if (url.searchParams.has()) { // creature-type
+        document.querySelector().value = url.searchParams.get("query");
+    } else if (url.searchParams.has()) { //instant
+        document.querySelector().value = url.searchParams.get("query");
+    } else if (url.searchParams.has()) { //sorcery
+        document.querySelector().value = url.searchParams.get("query");
+    } else if (url.searchParams.has()) { //artifact
+        document.querySelector().value = url.searchParams.get("query");
+    } else if (url.searchParams.has()) { //planeswalker
+        document.querySelector().value = url.searchParams.get("query");
+    } else if (url.searchParams.has()) { // enchantment
+        document.querySelector().value = url.searchParams.get("query");
+    } else if (url.searchParams.has()) { // CMC
+        document.querySelector().value = url.searchParams.get("query");
+    } else if (url.searchParams.has()) { // cardname
+        document.querySelector().value = url.searchParams.get("query");
+    }
+
+});
