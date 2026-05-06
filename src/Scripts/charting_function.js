@@ -12,7 +12,7 @@
 function createManaCurveChart() {
     const context = document.getElementById("mana-curve-chart").getContext("2d");
 
-    const curDeck = JSON.parse(localStorage.getItem("currentDeck"));
+    const curDeck = JSON.parse(localStorage.getItem("currentDeck")) || { name: "", cards: [], deckImage: "", format: "" };
 
     const manaCount = {};
 
@@ -56,7 +56,7 @@ function createLandRatioChart() {
 
     const context = document.getElementById("land-ratio-chart").getContext("2d");
 
-    const curDeck = JSON.parse(localStorage.getItem("currentDeck"));
+    const curDeck = JSON.parse(localStorage.getItem("currentDeck")) || { name: "", cards: [], deckImage: "", format: "" };
 
 
     // count lands

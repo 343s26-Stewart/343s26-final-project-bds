@@ -387,11 +387,13 @@ document.getElementById("delete-button").addEventListener("click", () => {
         //delete from decks
         delete decks[curdeck.name];
         localStorage.setItem("decks", JSON.stringify(decks));
+        
 
         // if it's in favorites, delete it from there too
-        if (favorites[curdeck.name]) {
+        if (favorites && favorites[curdeck.name]) {
             delete favorites[curdeck.name];
             localStorage.setItem("favorites", JSON.stringify(favorites));
         }
     }
+    window.location.reload();
 });
