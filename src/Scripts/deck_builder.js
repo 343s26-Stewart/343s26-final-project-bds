@@ -259,7 +259,7 @@ searchButton.addEventListener("click", (event) => {
     const searchTerm = searchInput.value;
     const deckName = deckNameElem.textContent;
 
-    window.location.href = `./search.html?deck=${encodeURIComponent(deckName)}&query=${encodeURIComponent(searchTerm)}`;
+    window.location.href = `./Pages/search.html?deck=${encodeURIComponent(deckName)}&query=${encodeURIComponent(searchTerm)}`;
 })
 
 /*
@@ -387,12 +387,14 @@ document.getElementById("delete-button").addEventListener("click", () => {
         //delete from decks
         delete decks[curdeck.name];
         localStorage.setItem("decks", JSON.stringify(decks));
+        
 
         // if it's in favorites, delete it from there too
-        if (favorites[curdeck.name]) {
+        if (favorites && favorites[curdeck.name]) {
             delete favorites[curdeck.name];
             localStorage.setItem("favorites", JSON.stringify(favorites));
         }
         location.reload();
     }
+    window.location.reload();
 });

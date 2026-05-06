@@ -237,6 +237,7 @@ document.addEventListener("click", (event) => {
         favorites[deck.name].cards.push(card);
         localStorage.setItem("favorites", JSON.stringify(favorites));
     }
+    alert(`${card.name} was added to ${deck.name}`);
 
     //change this to allow multiple cards to be added
     //window.location.href = "./index.html";
