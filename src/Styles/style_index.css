@@ -204,6 +204,15 @@ nav#decklist h2 {
     cursor: pointer;
 }
 
+select {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+input::file-selector-button {
+    background-color: var(--primary-color);
+    color: white;
+}
 
 @media (width >=320px) and (width <=700px) {
 

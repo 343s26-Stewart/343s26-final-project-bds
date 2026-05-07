@@ -28,23 +28,24 @@ async function displayResults(data) {
 
     // display card image and name
     //filter data here based on url Params
-    console.log(data);
     data.data = filterData(data.data);
     const dataPiece = data.data.slice(curitem, curitem + pageSize);
 
-    console.log(data);
 
     dataPiece.forEach((card) => {
         const cardElement = template.content.cloneNode(true);
         const cardContainer = cardElement.querySelector(".card-result");
         const cardImage = cardElement.querySelector(".card-image");
         const cardName = cardElement.querySelector(".card-name");
+
         if (card.image_uris !== undefined) {
             cardImage.src = card.image_uris.small;
             cardName.textContent = card.name;
+            cardImage.alt = `${card.name} card image`;
         } else if (card.card_faces !== undefined) { // add support for showing specific faces
             cardImage.src = card.card_faces[0].image_uris.small;
             cardName.textContent = card.card_faces[0].name;
+            cardImage.alt = `${card.card_faces[0].name} card image`;
         }
 
         results.appendChild(cardElement);
@@ -418,6 +419,7 @@ window.addEventListener("popstate", () => {
 
 
 });
+
 
 // on DOMContent Load populate filters/search with information provided by url
 document.addEventListener("DOMContentLoaded", () => {
