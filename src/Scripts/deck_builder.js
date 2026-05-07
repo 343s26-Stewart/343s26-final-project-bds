@@ -314,8 +314,8 @@ exportButton.addEventListener("click", () => {
 
 
 // Set Deck name
-deckNameButton.addEventListener("click", () => {
-
+document.getElementById("name-form").addEventListener("submit", () => {
+    
     let nameText = deckNameInput.value;
     deckNameElem.textContent = nameText;
 
@@ -333,7 +333,7 @@ deckNameButton.addEventListener("click", () => {
         name: nameText,
         cards: currCards,
         deckImage: "",
-        format: ""
+        format: formatSelect.value
     }))
 
     //should make a different place for this

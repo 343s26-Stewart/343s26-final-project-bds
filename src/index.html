@@ -63,18 +63,19 @@
                                     <label for="name-input">Enter A Deck Name: </label>
                                     <input type="text" id="name-input" name="name-input"
                                         placeholder="Enter deck name...">
+                                    <section id="format">
+                                        <label for="format-select">Format:</label>
+                                        <select id="format-select" required>
+                                            <option value="">Select a Format</option>
+                                            <option value="standard">Standard</option>
+                                            <option value="modern">Modern</option>
+                                            <option value="legacy">Legacy</option>
+                                            <option value="commander">Commander</option>
+                                            <option value="pauper">Pauper</option>
+                                        </select>
+                                    </section>
                                     <button type="submit" id="name-submit">Submit</button>
                                 </form>
-                            </section>
-                            <section id="format">
-                                <label for="format-select">Format:</label>
-                                <select id="format-select">
-                                    <option value="standard">Standard</option>
-                                    <option value="modern">Modern</option>
-                                    <option value="legacy">Legacy</option>
-                                    <option value="commander">Commander</option>
-                                    <option value="pauper">Pauper</option>
-                                </select>
                             </section>
                         </section>
                         <section id="local-controls">
