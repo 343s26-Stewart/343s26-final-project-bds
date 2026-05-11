@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
             deckName.textContent = deck;
 
             //set the deck image if it exists
-            if (deckObject[deck].deckImage !== "../ Images / Default_Deck_Image.png") {
+            if (deckObject[deck].deckImage !== "../Images/Default_Deck_Image.png") {
                 deckContainer.querySelector(".deck-image").src = deckObject[deck].deckImage;
                 deckContainer.querySelector(".deck-image").alt = `Standard ${deck} Deck Image`;
             } else {

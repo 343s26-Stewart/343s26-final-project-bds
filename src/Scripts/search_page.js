@@ -335,7 +335,7 @@ document.addEventListener("DOMContentLoaded", () => {
             routeToPage(parseInt(urlParams.get("page")));
         }
 
-        // query api with search term after 4.5 seconds
+        // query api with search term after 1 seconds
         window.setTimeout(async () => {
             card_data = await queryAPI();
         }, 1000);
