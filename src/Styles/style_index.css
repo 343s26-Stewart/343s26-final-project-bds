@@ -8,6 +8,11 @@ body {
 
 }
 
+/* Use border-box universally to make width calculations safe */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 /* Header styling */
 header {
     background-color: var(--primary-color);
@@ -53,11 +58,92 @@ header ul li p {
 button {
     background-color: var(--primary-color);
     color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+button:focus {
+    outline: 2px solid rgba(0,0,0,0.08);
 }
 
 #name-form {
-    padding-right: 10px;
+    /* make the form fields flow left-to-right by default
+       (mobile media queries will stack this into a column) */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0;
+    margin: 0;
+    flex: 1 1 auto;
 }
+
+/* The labeled area that contains the "Create a New Deck" label and the form */
+#name-form-area {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    justify-content: space-between;
+    border: 1px solid rgba(0,0,0,0.12);
+    background-color: rgba(255,255,255,0.96);
+    padding: 12px 14px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+}
+
+/* Tidy individual controls */
+#name-form-area > label[for="name-form"] {
+    font-weight: 700;
+    margin-right: 6px;
+    white-space: nowrap;
+}
+
+#name-input {
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(0,0,0,0.12);
+    min-width: 0; /* allow shrinking in narrow containers */
+    max-width: 100%;
+}
+
+#format {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#format-select {
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(0,0,0,0.12);
+    background-color: white;
+    color: black;
+}
+
+#name-submit {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+#search-form-area {
+    display: flex;
+    align-items: center;
+
+}
+
 
 /* user control styling */
 
@@ -66,6 +152,7 @@ button {
     flex-direction: column;
     display: flex;
     margin: 10px 10px;
+    
 }
 
 #user-controls section {
@@ -77,9 +164,11 @@ button {
     flex-direction: row;
 }
 
+
 #local-controls {
     display: flex;
     flex-direction: row;
+    gap: 8px; /* space between local control buttons */
 }
 
 #import-area {
@@ -89,6 +178,14 @@ button {
 
 #import-button {
     max-width: fit-content;
+}
+
+#deck-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 10px;
+    gap: 8px; /* space between deck-level buttons */
 }
 
 /*deck building area styling*/
@@ -101,7 +198,9 @@ main {
 }
 
 .deck-builder {
-    width: 65%;
+    /* use flex-basis so sizing participates cleanly in flex layout */
+    flex: 0 0 65%;
+    min-width: 0;
 }
 
 #deck-info {
@@ -109,6 +208,11 @@ main {
     flex-direction: column;
     width: 65%;
     height: 100%;
+}
+
+/* Small padding inside the Deck Builder content to match other form gutters */
+#Deck-Builder-Content {
+    padding: 10px;
 }
 
 .db-heading {
@@ -139,7 +243,8 @@ main {
 /*card preview styling*/
 
 .card-preview {
-    width: 35%;
+    flex: 0 0 35%;
+    min-width: 0;
 }
 
 
@@ -148,9 +253,9 @@ main {
     text-align: center;
 }
 
-sidebar.card-preview aside {
-    /* border-left: 2px solid black; */
-
+.card-preview aside {
+    /* Keep a little padding inside the preview panel */
+    padding: 12px;
 }
 
 
@@ -158,10 +263,21 @@ sidebar.card-preview aside {
 
 #decklist {
     padding-left: 10px;
-    width: 15%;
+    flex: 0 0 15%;
+    min-width: 0;
     background-color: var(--primary-color);
     color: white;
+}
 
+/* Make images and media scale instead of causing overflow */
+img, picture, video {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Ensure the main content doesn't overflow its container */
+#main-content {
+    min-width: 0;
 }
 
 
@@ -214,68 +330,101 @@ input::file-selector-button {
     color: white;
 }
 
-@media (width >=320px) and (width <=700px) {
+/* Responsive: small screens and narrow tablets */
+@media (max-width: 700px) {
 
-    /* make the main element a column instead of a row */
+    /* Stack main content vertically for narrow screens */
     .deck-builder {
-        width: 70%;
+        width: 100%;
     }
 
+    /* Hide sidebar on small screens to reduce clutter; can be toggled via JS later */
+    #decklist {
+        display: none;
+    }
+
+    /* Allow controls to wrap and stack */
     #user-controls {
-        padding: 0 0 0 0;
+        padding: 0;
         flex-wrap: wrap;
     }
 
     #overarching-controls {
-        padding: 0 0 0 0;
+        padding: 0;
         display: flex;
         flex-direction: column;
-        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    /* Stack the name form fields */
+    #name-form-area {
+        flex-direction: column;
+        align-items: stretch;
     }
 
     #name-form {
         display: flex;
         flex-direction: column;
+        gap: 8px;
+        width: 100%;
     }
 
-    #name-submit {
-        max-width: fit-content;
-    }
-
-    #name-input {
-        max-width: fit-content;
+    #name-submit,
+    #name-input,
+    #format-select {
+        width: 100%;
+        box-sizing: border-box;
     }
 
     #local-controls {
         display: flex;
         flex-direction: column;
+        gap: 8px;
     }
 
     #search-form {
         display: flex;
         flex-direction: column;
+        gap: 8px;
     }
 
-    #search-input,
-    #search-submit {
-        max-width: fit-content;
-    }
-
-    /* make the deck builder and card preview take up the full width */
+    /* make the card preview full width below the deck builder */
     .card-preview {
-        width: 70%;
+        width: 100%;
         min-height: 30vh;
-        padding-left: 10px;
+        padding-left: 0;
+        margin-top: 12px;
     }
-
-    /* make the deck info take up the full width */
 
     #main-content {
         flex-direction: column;
     }
 
-    #decklist {
-        width: 30%;
+    /* header nav should be able to wrap */
+    header ul {
+        flex-wrap: wrap;
+    }
+}
+
+/* Extra small phones */
+@media (max-width: 420px) {
+    #name-form-area {
+        padding: 10px;
     }
 
+    #name-input,
+    #format-select,
+    #name-submit {
+        font-size: 0.95rem;
+        padding: 10px;
+    }
+
+    /* Reduce gaps to save vertical space */
+    #name-form {
+        gap: 6px;
+    }
+
+    #user-controls section {
+        padding: 6px 6px;
+    }
 }

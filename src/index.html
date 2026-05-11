@@ -59,6 +59,7 @@
                     <section id="user-controls">
                         <section id="overarching-controls">
                             <section id="name-form-area">
+                                <label for="name-form">Create a New Deck</label>
                                 <form id="name-form">
                                     <label for="name-input">Enter A Deck Name: </label>
                                     <input type="text" id="name-input" name="name-input"
@@ -79,21 +80,13 @@
                             </section>
                         </section>
                         <section id="local-controls">
-                            <section id="export-area">
-                                <button type="button" id="export-button">Export Deck</button>
-                            </section>
                             <section id="import-area">
                                 <label for="jsonFile">Input a File: </label>
                                 <input type="file" id="jsonFile" name="jsonFile" accept=".json">
                                 <button type="button" id="import-button">Import Deck</button>
                             </section>
-                            <section id="favorite-area">
-                                <div id="favorite">
-                                    <button type="submit" id="favorite-button">Click to Favorite</button>
-                                </div>
-                            </section>
-                            <section id="delete-area">
-                                <button type="submit" id="delete-button">Delete Deck</button>
+                            <section id="export-area">
+                                <button type="button" id="export-button">Export Deck</button>
                             </section>
                         </section>
                         <section id="search-form-area">
@@ -106,6 +99,16 @@
                         </section>
                     </section>
                     <h2 id="deck-name"></h2>
+                    <section id="deck-buttons">
+                        <section id="favorite-area">
+                            <div id="favorite">
+                                <button type="submit" id="favorite-button">Click to Favorite</button>
+                            </div>
+                        </section>
+                        <section id="delete-area">
+                            <button type="submit" id="delete-button">Delete Deck</button>
+                        </section>
+                    </section>
                     <div class="hidden" id="artifacts">
                         <h3 id="artifacts-heading">Artifacts</h3>
                         <ul id="artifacts-list"></ul>
