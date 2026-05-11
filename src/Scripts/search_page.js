@@ -25,6 +25,7 @@ async function displayResults(data) {
 
     //clear out old cards
     deletePrevious()
+    console.log(data);
 
     // display card image and name
     //filter data here based on url Params
@@ -53,7 +54,8 @@ async function displayResults(data) {
 
         if (deckName) {
             const addButton = document.createElement("button");
-            addButton.textContent = `Add to ${deckName}`;
+            const url = new URL(window.location);
+            addButton.textContent = `Add to ${url.searchParams.get("deck")}`;
             addButton.className = "add-card-btn";
 
             // Adds JSON card data to button element, ex) <button class="add-card-btn" data-card='{"name":"Lightning Bolt","image_uris":{...}}'>
@@ -223,22 +225,26 @@ document.addEventListener("click", (event) => {
     const card = JSON.parse(event.target.dataset.card);
 
     //current deck
-    const deck = JSON.parse(localStorage.getItem("currentDeck")) || { name: "", cards: [] };
-    deck.cards.push(card);
-    localStorage.setItem("currentDeck", JSON.stringify(deck));
+    const deck = JSON.parse(localStorage.getItem("currentDeck")) || { name: "", cards: [] }
+    const url = new URL(window.location);
+    if (deck.name == url.searchParams.get("deck")) {
+        deck.cards.push(card);
+        localStorage.setItem("currentDeck", JSON.stringify(deck));
+    }
+
 
     //all decks
     const deckObj = JSON.parse(localStorage.getItem("decks"));
-    deckObj[deck.name].cards.push(card);
+    deckObj[url.searchParams.get("deck")].cards.push(card);
     localStorage.setItem("decks", JSON.stringify(deckObj));
 
     //favorites
     const favorites = JSON.parse(localStorage.getItem("favorites"));
-    if (favorites && favorites[deck.name]) {
-        favorites[deck.name].cards.push(card);
+    if (favorites && favorites[url.searchParams.get("deck")]) {
+        favorites[url.searchParams.get("deck")].cards.push(card);
         localStorage.setItem("favorites", JSON.stringify(favorites));
     }
-    alert(`${card.name} was added to ${deck.name}`);
+    alert(`${card.name} was added to ${url.searchParams.get("deck")}`);
 
     //change this to allow multiple cards to be added
     //window.location.href = "./index.html";
